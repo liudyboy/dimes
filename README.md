@@ -1,2 +1,7 @@
-# DIMES （DIstributed MEmory Store）
-基于 plasma  进行开发，支持节点间与节点内的数据访问，跨界节点的数据传输支持 RDMA 协议，节点内的数据访问使用共享内存。
+# Plasma
+
+Plasma is an experimental in-memory object manager. It is under development and
+not ready for general use.
+
+## clang-format
+Run .travis/git-clang-format to automatically format changes in the checkout.

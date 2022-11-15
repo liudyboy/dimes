@@ -1,0 +1,2633 @@
+
+/home/liudy/Seafile/WorkSpace/software/plasma/setup-env.sh,0
+
+/home/liudy/Seafile/WorkSpace/software/plasma/lib/python/plasma.py,1223
+Addr = ctypes.c_ubyte * 4Addr6,51
+PLASMA_ID_SIZE = 20PLASMA_ID_SIZE8,78
+ID = ctypes.c_ubyte * PLASMA_ID_SIZEID9,98
+class PlasmaID(ctypes.Structure):PlasmaID11,136
+  _fields_ = [("plasma_id", ID)]_fields_12,170
+def make_plasma_id(string):make_plasma_id14,204
+class PlasmaBuffer(object):PlasmaBuffer20,427
+  def __init__(self, buff, plasma_id, plasma_client):__init__34,1061
+  def __del__(self):__del__40,1246
+  def __getitem__(self, index):__getitem__44,1422
+  def __setitem__(self, index, value):__setitem__48,1559
+  def __len__(self):__len__55,1770
+class PlasmaClient(object):PlasmaClient59,1863
+  def __init__(self, socket_name, addr=None, port=None):__init__67,2148
+  def create(self, object_id, size, metadata=None):create108,4149
+  def get(self, object_id):get127,5133
+  def get_metadata(self, object_id):get_metadata143,5796
+  def contains(self, object_id):contains159,6514
+  def seal(self, object_id):seal175,7029
+  def delete(self, object_id):delete186,7383
+  def transfer(self, addr, port, object_id):transfer196,7714
+  def fetch(self, object_ids):fetch208,8257
+  def subscribe(self):subscribe226,9007
+  def get_next_notification(self):get_next_notification233,9307
+
+/home/liudy/Seafile/WorkSpace/software/plasma/.travis/check-git-clang-format-output.sh,0
+
+/home/liudy/Seafile/WorkSpace/software/plasma/test/manager_tests.c,1492
+SUITE(plasma_manager_tests);plasma_manager_tests16,269
+const char *manager_addr = "127.0.0.1";manager_addr18,299
+int manager_port = 12345;manager_port19,339
+const char *store_socket_name = "/tmp/store12345";store_socket_name20,365
+object_id oid;oid21,416
+int test_done_handler(event_loop *loop, timer_id id, void *context) {test_done_handler23,432
+  int port;port29,567
+  int manager_fd;manager_fd30,579
+  int local_store;local_store31,597
+  plasma_manager_state *state;state32,616
+  event_loop *loop;loop33,647
+  client_connection *write_conn;write_conn35,741
+  client_connection *read_conn;read_conn36,774
+  plasma_connection *plasma_conn;plasma_conn39,901
+  client_connection *client_conn;client_conn40,935
+  client_object_connection *object_conn;object_conn41,969
+} plasma_mock;plasma_mock42,1010
+plasma_mock *init_plasma_mock(int port, plasma_mock *remote_mock) {init_plasma_mock44,1026
+void add_mock_object_conn(plasma_mock *mock, object_id oid) {add_mock_object_conn70,1958
+void destroy_plasma_mock(plasma_mock *mock) {destroy_plasma_mock80,2373
+TEST request_transfer_test(void) {request_transfer_test105,3218
+TEST request_transfer_retry_test(void) {request_transfer_retry_test143,4888
+TEST request_transfer_timeout_test(void) {request_transfer_timeout_test184,6655
+TEST read_write_object_chunk_test(void) {read_write_object_chunk_test214,7884
+SUITE(plasma_manager_tests) {SUITE251,9140
+int main(int argc, char **argv) {main261,9395
+
+/home/liudy/Seafile/WorkSpace/software/plasma/test/test.py,1365
+USE_VALGRIND = FalseUSE_VALGRIND16,194
+def random_object_id():random_object_id18,216
+def generate_metadata(length):generate_metadata21,327
+def write_to_data_buffer(buff, length):write_to_data_buffer30,636
+def create_object(client, data_size, metadata_size, seal=True):create_object37,876
+def assert_get_object_equal(unit_test, client1, client2, object_id, memory_buffer=None, metadata=None):assert_get_object_equal46,1215
+class TestPlasmaClient(unittest.TestCase):TestPlasmaClient55,1723
+  def setUp(self):setUp57,1767
+  def tearDown(self):tearDown70,2318
+  def test_create(self):test_create80,2544
+  def test_create_with_metadata(self):test_create_with_metadata95,3050
+  def test_contains(self):test_contains117,3951
+  def test_illegal_functionality(self):test_illegal_functionality172,6271
+    def illegal_assignment():illegal_assignment190,7035
+  def test_subscribe(self):test_subscribe194,7151
+class TestPlasmaManager(unittest.TestCase):TestPlasmaManager208,7799
+  def setUp(self):setUp210,7844
+  def tearDown(self):tearDown263,10702
+  def test_fetch(self):test_fetch285,11391
+  def test_fetch_multiple(self):test_fetch_multiple309,12605
+  def test_transfer(self):test_transfer340,14454
+  def test_illegal_functionality(self):test_illegal_functionality363,15657
+  def test_stresstest(self):test_stresstest372,16060
+
+/home/liudy/Seafile/WorkSpace/software/plasma/thirdparty/dlmalloc.c,31815
+#define DLMALLOC_VERSION DLMALLOC_VERSION526,28098
+#define DLMALLOC_EXPORT DLMALLOC_EXPORT530,28184
+#define WIN32 WIN32535,28251
+#define LACKS_FCNTL_HLACKS_FCNTL_H538,28306
+#define WIN32 WIN32539,28328
+#define WIN32_LEAN_AND_MEANWIN32_LEAN_AND_MEAN543,28401
+#define HAVE_MMAP HAVE_MMAP546,28469
+#define HAVE_MORECORE HAVE_MORECORE547,28489
+#define LACKS_UNISTD_HLACKS_UNISTD_H548,28513
+#define LACKS_SYS_PARAM_HLACKS_SYS_PARAM_H549,28536
+#define LACKS_SYS_MMAN_HLACKS_SYS_MMAN_H550,28562
+#define LACKS_STRING_HLACKS_STRING_H551,28587
+#define LACKS_STRINGS_HLACKS_STRINGS_H552,28610
+#define LACKS_SYS_TYPES_HLACKS_SYS_TYPES_H553,28634
+#define LACKS_ERRNO_HLACKS_ERRNO_H554,28660
+#define LACKS_SCHED_HLACKS_SCHED_H555,28682
+#define MALLOC_FAILURE_ACTIONMALLOC_FAILURE_ACTION557,28734
+#define MMAP_CLEARS MMAP_CLEARS561,28875
+#define MMAP_CLEARS MMAP_CLEARS563,28903
+#define HAVE_MORECORE HAVE_MORECORE571,29127
+#define HAVE_MMAP HAVE_MMAP572,29151
+#define MALLOC_ALIGNMENT MALLOC_ALIGNMENT575,29243
+#define MAX_SIZE_T MAX_SIZE_T585,29496
+#define USE_LOCKS USE_LOCKS588,29606
+#define USE_SPIN_LOCKS USE_SPIN_LOCKS598,30150
+#define USE_SPIN_LOCKS USE_SPIN_LOCKS604,30346
+#define ONLY_MSPACES ONLY_MSPACES608,30416
+#define MSPACES MSPACES612,30499
+#define MSPACES MSPACES614,30544
+#define MALLOC_ALIGNMENT MALLOC_ALIGNMENT618,30636
+#define FOOTERS FOOTERS621,30739
+#define ABORT ABORT624,30793
+#define ABORT_ON_ASSERT_FAILURE ABORT_ON_ASSERT_FAILURE627,30868
+#define PROCEED_ON_ERROR PROCEED_ON_ERROR630,30965
+#define INSECURE INSECURE634,31041
+#define MALLOC_INSPECT_ALL MALLOC_INSPECT_ALL637,31110
+#define HAVE_MMAP HAVE_MMAP640,31190
+#define MMAP_CLEARS MMAP_CLEARS643,31254
+#define HAVE_MREMAP HAVE_MREMAP647,31335
+#define _GNU_SOURCE _GNU_SOURCE648,31357
+#define HAVE_MREMAP HAVE_MREMAP650,31432
+#define MALLOC_FAILURE_ACTION MALLOC_FAILURE_ACTION654,31530
+#define HAVE_MORECORE HAVE_MORECORE658,31652
+#define HAVE_MORECORE HAVE_MORECORE660,31703
+#define MORECORE_CONTIGUOUS MORECORE_CONTIGUOUS664,31801
+#define MORECORE_DEFAULT MORECORE_DEFAULT666,31860
+#define MORECORE_CONTIGUOUS MORECORE_CONTIGUOUS668,31918
+#define DEFAULT_GRANULARITY DEFAULT_GRANULARITY673,32082
+#define DEFAULT_GRANULARITY DEFAULT_GRANULARITY675,32190
+#define DEFAULT_TRIM_THRESHOLD DEFAULT_TRIM_THRESHOLD680,32376
+#define DEFAULT_TRIM_THRESHOLD DEFAULT_TRIM_THRESHOLD682,32487
+#define DEFAULT_MMAP_THRESHOLD DEFAULT_MMAP_THRESHOLD687,32646
+#define DEFAULT_MMAP_THRESHOLD DEFAULT_MMAP_THRESHOLD689,32732
+#define MAX_RELEASE_CHECK_RATE MAX_RELEASE_CHECK_RATE694,32880
+#define MAX_RELEASE_CHECK_RATE MAX_RELEASE_CHECK_RATE696,32922
+#define USE_BUILTIN_FFS USE_BUILTIN_FFS700,33047
+#define USE_DEV_RANDOM USE_DEV_RANDOM703,33126
+#define NO_MALLINFO NO_MALLINFO706,33200
+#define MALLINFO_FIELD_TYPE MALLINFO_FIELD_TYPE709,33276
+#define NO_MALLOC_STATS NO_MALLOC_STATS712,33369
+#define NO_SEGMENT_TRAVERSAL NO_SEGMENT_TRAVERSAL715,33454
+#define M_TRIM_THRESHOLD M_TRIM_THRESHOLD725,33775
+#define M_GRANULARITY M_GRANULARITY726,33809
+#define M_MMAP_THRESHOLD M_MMAP_THRESHOLD727,33843
+#define _STRUCT_MALLINFO_STRUCT_MALLINFO761,35365
+#define STRUCT_MALLINFO_DECLARED STRUCT_MALLINFO_DECLARED762,35390
+struct mallinfo {mallinfo763,35425
+  MALLINFO_FIELD_TYPE arena;    /* non-mmapped space allocated from system */arena764,35443
+  MALLINFO_FIELD_TYPE ordblks;  /* number of free chunks */ordblks765,35521
+  MALLINFO_FIELD_TYPE smblks;   /* always 0 */smblks766,35581
+  MALLINFO_FIELD_TYPE hblks;    /* always 0 */hblks767,35628
+  MALLINFO_FIELD_TYPE hblkhd;   /* space in mmapped regions */hblkhd768,35675
+  MALLINFO_FIELD_TYPE usmblks;  /* maximum total allocated space */usmblks769,35738
+  MALLINFO_FIELD_TYPE fsmblks;  /* always 0 */fsmblks770,35806
+  MALLINFO_FIELD_TYPE uordblks; /* total allocated space */uordblks771,35853
+  MALLINFO_FIELD_TYPE fordblks; /* total free space */fordblks772,35913
+  MALLINFO_FIELD_TYPE keepcost; /* releasable (via malloc_trim) space */keepcost773,35968
+#define FORCEINLINE FORCEINLINE786,36334
+    #define FORCEINLINE FORCEINLINE788,36421
+    #define NOINLINE NOINLINE793,36516
+    #define NOINLINE NOINLINE795,36590
+    #define NOINLINENOINLINE797,36640
+ #define FORCEINLINE FORCEINLINE804,36730
+ #define FORCEINLINEFORCEINLINE808,36810
+#define dlcalloc dlcalloc816,36959
+#define dlfree dlfree817,36997
+#define dlmalloc dlmalloc818,37033
+#define dlmemalign dlmemalign819,37071
+#define dlposix_memalign dlposix_memalign820,37111
+#define dlrealloc dlrealloc821,37157
+#define dlrealloc_in_place dlrealloc_in_place822,37196
+#define dlvalloc dlvalloc823,37244
+#define dlpvalloc dlpvalloc824,37282
+#define dlmallinfo dlmallinfo825,37321
+#define dlmallopt dlmallopt826,37361
+#define dlmalloc_trim dlmalloc_trim827,37400
+#define dlmalloc_stats dlmalloc_stats828,37443
+#define dlmalloc_usable_size dlmalloc_usable_size829,37487
+#define dlmalloc_footprint dlmalloc_footprint830,37537
+#define dlmalloc_max_footprint dlmalloc_max_footprint831,37585
+#define dlmalloc_footprint_limit dlmalloc_footprint_limit832,37637
+#define dlmalloc_set_footprint_limit dlmalloc_set_footprint_limit833,37693
+#define dlmalloc_inspect_all dlmalloc_inspect_all834,37757
+#define dlindependent_calloc dlindependent_calloc835,37807
+#define dlindependent_comalloc dlindependent_comalloc836,37857
+#define dlbulk_free dlbulk_free837,37909
+typedef void* mspace;mspace1270,55612
+#undef assertassert1443,61384
+#define assert(assert1444,61398
+#define assert(assert1450,61558
+#define DEBUG DEBUG1452,61583
+#define __USE_GNU __USE_GNU1472,62230
+#undef __USE_GNU__USE_GNU1474,62290
+#define interlockedcompareexchange interlockedcompareexchange1516,63577
+#define interlockedexchange interlockedexchange1517,63640
+#define interlockedcompareexchange(interlockedcompareexchange1519,63731
+#define interlockedexchange interlockedexchange1520,63812
+#define LOCK_AT_FORK LOCK_AT_FORK1526,63951
+#define BitScanForward BitScanForward1541,64378
+#define BitScanReverse BitScanReverse1542,64417
+#      define _SC_PAGE_SIZE _SC_PAGE_SIZE1552,64744
+#    define malloc_getpagesize malloc_getpagesize1556,64828
+#      define malloc_getpagesize malloc_getpagesize1560,64993
+#        define malloc_getpagesize malloc_getpagesize1563,65113
+#          define malloc_getpagesize malloc_getpagesize1569,65285
+#              define malloc_getpagesize malloc_getpagesize1573,65399
+#              define malloc_getpagesize malloc_getpagesize1575,65463
+#              define malloc_getpagesize malloc_getpagesize1579,65579
+#                define malloc_getpagesize malloc_getpagesize1582,65673
+#                define malloc_getpagesize malloc_getpagesize1584,65762
+#define SIZE_T_SIZE SIZE_T_SIZE1598,66061
+#define SIZE_T_BITSIZE SIZE_T_BITSIZE1599,66106
+#define SIZE_T_ZERO SIZE_T_ZERO1603,66259
+#define SIZE_T_ONE SIZE_T_ONE1604,66299
+#define SIZE_T_TWO SIZE_T_TWO1605,66339
+#define SIZE_T_FOUR SIZE_T_FOUR1606,66379
+#define TWO_SIZE_T_SIZES TWO_SIZE_T_SIZES1607,66419
+#define FOUR_SIZE_T_SIZES FOUR_SIZE_T_SIZES1608,66464
+#define SIX_SIZE_T_SIZES SIX_SIZE_T_SIZES1609,66509
+#define HALF_MAX_SIZE_T HALF_MAX_SIZE_T1610,66574
+#define CHUNK_ALIGN_MASK CHUNK_ALIGN_MASK1613,66680
+#define is_aligned(is_aligned1616,66790
+#define align_offset(align_offset1619,66922
+#define MFAIL MFAIL1633,67376
+#define CMFAIL CMFAIL1634,67427
+#define MUNMAP_DEFAULT(MUNMAP_DEFAULT1639,67533
+#define MMAP_PROT MMAP_PROT1640,67580
+#define MAP_ANONYMOUS MAP_ANONYMOUS1642,67681
+#define MMAP_FLAGS MMAP_FLAGS1645,67762
+#define MMAP_DEFAULT(MMAP_DEFAULT1646,67819
+#define MMAP_FLAGS MMAP_FLAGS1652,68054
+static int dev_zero_fd = -1; /* Cached file descriptor for /dev/zero. */dev_zero_fd1653,68097
+#define MMAP_DEFAULT(MMAP_DEFAULT1654,68170
+#define DIRECT_MMAP_DEFAULT(DIRECT_MMAP_DEFAULT1660,68434
+static FORCEINLINE void* win32mmap(size_t size) {win32mmap1665,68535
+static FORCEINLINE void* win32direct_mmap(size_t size) {win32direct_mmap1671,68763
+static FORCEINLINE int win32munmap(void* ptr, size_t size) {win32munmap1678,69030
+#define MMAP_DEFAULT(MMAP_DEFAULT1695,69534
+#define MUNMAP_DEFAULT(MUNMAP_DEFAULT1696,69583
+#define DIRECT_MMAP_DEFAULT(DIRECT_MMAP_DEFAULT1697,69641
+#define MREMAP_DEFAULT(MREMAP_DEFAULT1703,69770
+        #define CALL_MORECORE(CALL_MORECORE1712,69963
+        #define CALL_MORECORE(CALL_MORECORE1714,70037
+    #define CALL_MORECORE(CALL_MORECORE1717,70146
+    #define USE_MMAP_BIT USE_MMAP_BIT1724,70287
+        #define CALL_MMAP(CALL_MMAP1727,70353
+        #define CALL_MMAP(CALL_MMAP1729,70418
+        #define CALL_MUNMAP(CALL_MUNMAP1732,70510
+        #define CALL_MUNMAP(CALL_MUNMAP1734,70586
+        #define CALL_DIRECT_MMAP(CALL_DIRECT_MMAP1737,70694
+        #define CALL_DIRECT_MMAP(CALL_DIRECT_MMAP1739,70773
+    #define USE_MMAP_BIT USE_MMAP_BIT1742,70884
+    #define MMAP(MMAP1744,70935
+    #define MUNMAP(MUNMAP1745,70977
+    #define DIRECT_MMAP(DIRECT_MMAP1746,71018
+    #define CALL_DIRECT_MMAP(CALL_DIRECT_MMAP1747,71060
+    #define CALL_MMAP(CALL_MMAP1748,71111
+    #define CALL_MUNMAP(CALL_MUNMAP1749,71155
+        #define CALL_MREMAP(CALL_MREMAP1757,71309
+        #define CALL_MREMAP(CALL_MREMAP1759,71415
+    #define CALL_MREMAP(CALL_MREMAP1762,71568
+#define USE_NONCONTIGUOUS_BIT USE_NONCONTIGUOUS_BIT1766,71725
+#define EXTERN_BIT EXTERN_BIT1769,71810
+#define USE_LOCK_BIT USE_LOCK_BIT1803,73127
+#define INITIAL_LOCK(INITIAL_LOCK1804,73167
+#define DESTROY_LOCK(DESTROY_LOCK1805,73206
+#define ACQUIRE_MALLOC_GLOBAL_LOCK(ACQUIRE_MALLOC_GLOBAL_LOCK1806,73245
+#define RELEASE_MALLOC_GLOBAL_LOCK(RELEASE_MALLOC_GLOBAL_LOCK1807,73282
+#define CAS_LOCK(CAS_LOCK1826,73896
+#define CLEAR_LOCK(CLEAR_LOCK1827,73953
+static FORCEINLINE int x86_cas_lock(int *sl) {x86_cas_lock1831,74120
+static FORCEINLINE void x86_clear_lock(int* sl) {x86_clear_lock1842,74416
+#define CAS_LOCK(CAS_LOCK1852,74684
+#define CLEAR_LOCK(CLEAR_LOCK1853,74726
+#define CAS_LOCK(CAS_LOCK1856,74793
+#define CLEAR_LOCK(CLEAR_LOCK1857,74851
+#define SPINS_PER_YIELD SPINS_PER_YIELD1862,74984
+#define SLEEP_EX_DURATION SLEEP_EX_DURATION1864,75039
+#define SPIN_LOCK_YIELD SPIN_LOCK_YIELD1865,75100
+#define SPIN_LOCK_YIELD SPIN_LOCK_YIELD1867,75215
+#define SPIN_LOCK_YIELD SPIN_LOCK_YIELD1869,75284
+#define SPIN_LOCK_YIELDSPIN_LOCK_YIELD1871,75331
+static int spin_acquire_lock(int *sl) {spin_acquire_lock1876,75512
+#define MLOCK_T MLOCK_T1886,75714
+#define TRY_LOCK(TRY_LOCK1887,75748
+#define RELEASE_LOCK(RELEASE_LOCK1888,75792
+#define ACQUIRE_LOCK(ACQUIRE_LOCK1889,75837
+#define INITIAL_LOCK(INITIAL_LOCK1890,75909
+#define DESTROY_LOCK(DESTROY_LOCK1891,75949
+static MLOCK_T malloc_global_mutex = 0;malloc_global_mutex1892,75983
+#define THREAD_ID_T THREAD_ID_T1897,76097
+#define CURRENT_THREAD CURRENT_THREAD1898,76133
+#define EQ_OWNER(EQ_OWNER1899,76184
+#define THREAD_ID_T THREAD_ID_T1906,76427
+#define CURRENT_THREAD CURRENT_THREAD1907,76467
+#define EQ_OWNER(EQ_OWNER1908,76512
+struct malloc_recursive_lock {malloc_recursive_lock1911,76570
+  int sl;sl1912,76601
+  unsigned int c;c1913,76611
+  THREAD_ID_T threadid;threadid1914,76629
+#define MLOCK_T MLOCK_T1917,76657
+static MLOCK_T malloc_global_mutex = { 0, 0, (THREAD_ID_T)0};malloc_global_mutex1918,76703
+static FORCEINLINE void recursive_release_lock(MLOCK_T *lk) {recursive_release_lock1920,76766
+static FORCEINLINE int recursive_acquire_lock(MLOCK_T *lk) {recursive_acquire_lock1927,76905
+static FORCEINLINE int recursive_try_lock(MLOCK_T *lk) {recursive_try_lock1948,77370
+#define RELEASE_LOCK(RELEASE_LOCK1964,77714
+#define TRY_LOCK(TRY_LOCK1965,77771
+#define ACQUIRE_LOCK(ACQUIRE_LOCK1966,77824
+#define INITIAL_LOCK(INITIAL_LOCK1967,77881
+#define DESTROY_LOCK(DESTROY_LOCK1968,77972
+#define MLOCK_T MLOCK_T1972,78091
+#define ACQUIRE_LOCK(ACQUIRE_LOCK1973,78138
+#define RELEASE_LOCK(RELEASE_LOCK1974,78198
+#define TRY_LOCK(TRY_LOCK1975,78253
+#define INITIAL_LOCK(INITIAL_LOCK1976,78311
+#define DESTROY_LOCK(DESTROY_LOCK1977,78405
+#define NEED_GLOBAL_LOCK_INITNEED_GLOBAL_LOCK_INIT1978,78466
+static MLOCK_T malloc_global_mutex;malloc_global_mutex1980,78497
+static volatile LONG malloc_global_mutex_status;malloc_global_mutex_status1981,78533
+static void init_malloc_global_mutex() {init_malloc_global_mutex1984,78629
+#define MLOCK_T MLOCK_T2001,79135
+#define ACQUIRE_LOCK(ACQUIRE_LOCK2002,79181
+#define RELEASE_LOCK(RELEASE_LOCK2003,79234
+#define TRY_LOCK(TRY_LOCK2004,79289
+#define INITIAL_LOCK(INITIAL_LOCK2005,79348
+#define DESTROY_LOCK(DESTROY_LOCK2006,79400
+#define PTHREAD_MUTEX_RECURSIVE PTHREAD_MUTEX_RECURSIVE2013,79830
+#define pthread_mutexattr_settype(pthread_mutexattr_settype2014,79889
+static MLOCK_T malloc_global_mutex = PTHREAD_MUTEX_INITIALIZER;malloc_global_mutex2017,80000
+static int pthread_init_lock (MLOCK_T *lk) {pthread_init_lock2019,80065
+#define USE_LOCK_BIT USE_LOCK_BIT2033,80510
+#define ACQUIRE_MALLOC_GLOBAL_LOCK(ACQUIRE_MALLOC_GLOBAL_LOCK2036,80586
+#define RELEASE_MALLOC_GLOBAL_LOCK(RELEASE_MALLOC_GLOBAL_LOCK2040,80703
+struct malloc_chunk {malloc_chunk2182,88621
+  size_t               prev_foot;  /* Size of previous chunk (if free).  */prev_foot2183,88643
+  size_t               head;       /* Size and inuse bits. */head2184,88719
+  struct malloc_chunk* fd;         /* double links -- used only if free. */fd2185,88781
+  struct malloc_chunk* bk;bk2186,88857
+typedef struct malloc_chunk  mchunk;mchunk2189,88888
+typedef struct malloc_chunk* mchunkptr;mchunkptr2190,88925
+typedef struct malloc_chunk* sbinptr;  /* The type of bins of chunks */sbinptr2191,88965
+typedef unsigned int bindex_t;         /* Described below */bindex_t2192,89037
+typedef unsigned int binmap_t;         /* Described below */binmap_t2193,89098
+typedef unsigned int flag_t;           /* The type of various bit flag sets */flag_t2194,89159
+#define MCHUNK_SIZE MCHUNK_SIZE2198,89318
+#define CHUNK_OVERHEAD CHUNK_OVERHEAD2201,89376
+#define CHUNK_OVERHEAD CHUNK_OVERHEAD2203,89443
+#define MMAP_CHUNK_OVERHEAD MMAP_CHUNK_OVERHEAD2207,89563
+#define MMAP_FOOT_PAD MMAP_FOOT_PAD2209,89671
+#define MIN_CHUNK_SIZE\MIN_CHUNK_SIZE2212,89786
+#define chunk2mem(chunk2mem2216,89932
+#define mem2chunk(mem2chunk2217,90007
+#define align_as_chunk(align_as_chunk2219,90128
+#define MAX_REQUEST MAX_REQUEST2222,90246
+#define MIN_REQUEST MIN_REQUEST2223,90299
+#define pad_request(pad_request2226,90418
+#define request2size(request2size2230,90573
+#define PINUSE_BIT PINUSE_BIT2244,91024
+#define CINUSE_BIT CINUSE_BIT2245,91065
+#define FLAG4_BIT FLAG4_BIT2246,91106
+#define INUSE_BITS INUSE_BITS2247,91148
+#define FLAG_BITS FLAG_BITS2248,91200
+#define FENCEPOST_HEAD FENCEPOST_HEAD2251,91295
+#define cinuse(cinuse2254,91392
+#define pinuse(pinuse2255,91445
+#define flag4inuse(flag4inuse2256,91498
+#define is_inuse(is_inuse2257,91550
+#define is_mmapped(is_mmapped2258,91619
+#define chunksize(chunksize2260,91680
+#define clear_pinuse(clear_pinuse2262,91736
+#define set_flag4(set_flag42263,91791
+#define clear_flag4(clear_flag42264,91844
+#define chunk_plus_offset(chunk_plus_offset2267,91946
+#define chunk_minus_offset(chunk_minus_offset2268,92013
+#define next_chunk(next_chunk2271,92134
+#define prev_chunk(prev_chunk2272,92212
+#define next_pinuse(next_pinuse2275,92322
+#define get_foot(get_foot2278,92413
+#define set_foot(set_foot2279,92482
+#define set_size_and_pinuse_of_free_chunk(set_size_and_pinuse_of_free_chunk2282,92595
+#define set_free_with_pinuse(set_free_with_pinuse2286,92748
+#define overhead_for(overhead_for2290,92905
+#define calloc_must_clear(calloc_must_clear2295,93065
+#define calloc_must_clear(calloc_must_clear2297,93135
+struct malloc_tree_chunk {malloc_tree_chunk2391,98660
+  size_t                    prev_foot;prev_foot2393,98754
+  size_t                    head;head2394,98793
+  struct malloc_tree_chunk* fd;fd2395,98827
+  struct malloc_tree_chunk* bk;bk2396,98859
+  struct malloc_tree_chunk* child[2];child2398,98892
+  struct malloc_tree_chunk* parent;parent2399,98930
+  bindex_t                  index;index2400,98966
+typedef struct malloc_tree_chunk  tchunk;tchunk2403,99005
+typedef struct malloc_tree_chunk* tchunkptr;tchunkptr2404,99047
+typedef struct malloc_tree_chunk* tbinptr; /* The type of bins of trees */tbinptr2405,99092
+#define leftmost_child(leftmost_child2408,99206
+struct malloc_segment {malloc_segment2467,102231
+  char*        base;             /* base address */base2468,102255
+  size_t       size;             /* allocated size */size2469,102307
+  struct malloc_segment* next;   /* ptr to next segment */next2470,102361
+  flag_t       sflags;           /* mmap and extern flag */sflags2471,102420
+#define is_mmapped_segment(is_mmapped_segment2474,102484
+#define is_extern_segment(is_extern_segment2475,102544
+typedef struct malloc_segment  msegment;msegment2477,102603
+typedef struct malloc_segment* msegmentptr;msegmentptr2478,102644
+#define NSMALLBINS NSMALLBINS2568,106338
+#define NTREEBINS NTREEBINS2569,106370
+#define SMALLBIN_SHIFT SMALLBIN_SHIFT2570,106402
+#define SMALLBIN_WIDTH SMALLBIN_WIDTH2571,106433
+#define TREEBIN_SHIFT TREEBIN_SHIFT2572,106490
+#define MIN_LARGE_SIZE MIN_LARGE_SIZE2573,106521
+#define MAX_SMALL_SIZE MAX_SMALL_SIZE2574,106577
+#define MAX_SMALL_REQUEST MAX_SMALL_REQUEST2575,106633
+struct malloc_state {malloc_state2577,106713
+  binmap_t   smallmap;smallmap2578,106735
+  binmap_t   treemap;treemap2579,106758
+  size_t     dvsize;dvsize2580,106780
+  size_t     topsize;topsize2581,106801
+  char*      least_addr;least_addr2582,106823
+  mchunkptr  dv;dv2583,106848
+  mchunkptr  top;top2584,106865
+  size_t     trim_check;trim_check2585,106883
+  size_t     release_checks;release_checks2586,106908
+  size_t     magic;magic2587,106937
+  mchunkptr  smallbins[(NSMALLBINS+1)*2];smallbins2588,106957
+  tbinptr    treebins[NTREEBINS];treebins2589,106999
+  size_t     footprint;footprint2590,107033
+  size_t     max_footprint;max_footprint2591,107057
+  size_t     footprint_limit; /* zero means no limit */footprint_limit2592,107085
+  flag_t     mflags;mflags2593,107141
+  MLOCK_T    mutex;     /* locate lock among fields that rarely change */mutex2595,107176
+  msegment   seg;seg2597,107273
+  void*      extp;      /* Unused but available for extensions */extp2598,107291
+  size_t     exts;exts2599,107357
+typedef struct malloc_state*    mstate;mstate2602,107380
+struct malloc_params {malloc_params2613,107756
+  size_t magic;magic2614,107779
+  size_t page_size;page_size2615,107795
+  size_t granularity;granularity2616,107815
+  size_t mmap_threshold;mmap_threshold2617,107837
+  size_t trim_threshold;trim_threshold2618,107862
+  flag_t default_mflags;default_mflags2619,107887
+static struct malloc_params mparams;mparams2622,107916
+#define ensure_initialization(ensure_initialization2625,107987
+static struct malloc_state _gm_;_gm_2630,108146
+#define gm gm2631,108179
+#define is_global(is_global2632,108214
+#define is_initialized(is_initialized2636,108285
+#define use_lock(use_lock2642,108436
+#define enable_lock(enable_lock2643,108497
+#define disable_lock(disable_lock2645,108572
+#define disable_lock(disable_lock2647,108639
+#define use_mmap(use_mmap2650,108671
+#define enable_mmap(enable_mmap2651,108732
+#define disable_mmap(disable_mmap2653,108807
+#define disable_mmap(disable_mmap2655,108874
+#define use_noncontiguous(use_noncontiguous2658,108906
+#define disable_contiguous(disable_contiguous2659,108976
+#define set_lock(set_lock2661,109047
+#define page_align(page_align2667,109184
+#define granularity_align(granularity_align2671,109319
+#define mmap_align(mmap_align2678,109523
+#define mmap_align(mmap_align2680,109572
+#define SYS_ALLOC_PADDING SYS_ALLOC_PADDING2684,109692
+#define is_page_aligned(is_page_aligned2686,109754
+#define is_granularity_aligned(is_granularity_aligned2688,109841
+#define segment_holds(segment_holds2692,109979
+static msegmentptr segment_holding(mstate m, char* addr) {segment_holding2696,110112
+static int has_segment_link(mstate m, msegmentptr ss) {has_segment_link2707,110391
+#define should_trim(should_trim2718,110652
+#define should_trim(should_trim2720,110736
+#define TOP_FOOT_SIZE\TOP_FOOT_SIZE2728,110981
+#define PREACTION(PREACTION2741,111355
+#define POSTACTION(POSTACTION2742,111424
+#define PREACTION(PREACTION2746,111535
+#define POSTACTION(POSTACTION2750,111604
+int malloc_corruption_error_count;malloc_corruption_error_count2766,112096
+#define CORRUPTION_ERROR_ACTION(CORRUPTION_ERROR_ACTION2771,112203
+#define USAGE_ERROR_ACTION(USAGE_ERROR_ACTION2772,112257
+#define CORRUPTION_ERROR_ACTION(CORRUPTION_ERROR_ACTION2777,112353
+#define USAGE_ERROR_ACTION(USAGE_ERROR_ACTION2781,112459
+#define check_free_chunk(check_free_chunk2791,112654
+#define check_inuse_chunk(check_inuse_chunk2792,112684
+#define check_malloced_chunk(check_malloced_chunk2793,112715
+#define check_mmapped_chunk(check_mmapped_chunk2794,112751
+#define check_malloc_state(check_malloc_state2795,112784
+#define check_top_chunk(check_top_chunk2796,112814
+#define check_free_chunk(check_free_chunk2799,112862
+#define check_inuse_chunk(check_inuse_chunk2800,112923
+#define check_top_chunk(check_top_chunk2801,112985
+#define check_malloced_chunk(check_malloced_chunk2802,113045
+#define check_mmapped_chunk(check_mmapped_chunk2803,113112
+#define check_malloc_state(check_malloc_state2804,113176
+#define is_small(is_small2822,113998
+#define small_index(small_index2823,114065
+#define small_index2size(small_index2size2824,114128
+#define MIN_SMALL_INDEX MIN_SMALL_INDEX2825,114181
+#define smallbin_at(smallbin_at2828,114306
+#define treebin_at(treebin_at2829,114380
+#define compute_tree_index(compute_tree_index2833,114574
+#define compute_tree_index(compute_tree_index2847,114938
+#define compute_tree_index(compute_tree_index2861,115259
+#define compute_tree_index(compute_tree_index2876,115577
+#define bit_for_tree_index(bit_for_tree_index2896,116118
+#define leftshift_for_tree_index(leftshift_for_tree_index2900,116299
+#define minsize_for_tree_index(minsize_for_tree_index2905,116500
+#define idx2bit(idx2bit2913,116781
+#define mark_smallmap(mark_smallmap2916,116876
+#define clear_smallmap(clear_smallmap2917,116939
+#define smallmap_is_marked(smallmap_is_marked2918,117002
+#define mark_treemap(mark_treemap2920,117066
+#define clear_treemap(clear_treemap2921,117129
+#define treemap_is_marked(treemap_is_marked2922,117192
+#define least_bit(least_bit2925,117300
+#define left_bits(left_bits2928,117397
+#define same_or_left_bits(same_or_left_bits2931,117512
+#define compute_bit2idx(compute_bit2idx2936,117688
+#define compute_bit2idx(compute_bit2idx2944,117823
+#define compute_bit2idx(compute_bit2idx2952,117972
+#define compute_bit2idx(compute_bit2idx2960,118107
+#define compute_bit2idx(compute_bit2idx2963,118157
+#define ok_address(ok_address3007,120122
+#define ok_next(ok_next3009,120246
+#define ok_inuse(ok_inuse3011,120331
+#define ok_pinuse(ok_pinuse3013,120406
+#define ok_address(ok_address3016,120464
+#define ok_next(ok_next3017,120493
+#define ok_inuse(ok_inuse3018,120522
+#define ok_pinuse(ok_pinuse3019,120551
+#define ok_magic(ok_magic3024,120690
+#define ok_magic(ok_magic3026,120781
+#define RTCHECK(RTCHECK3032,120964
+#define RTCHECK(RTCHECK3034,121024
+#define RTCHECK(RTCHECK3037,121088
+#define mark_inuse_foot(mark_inuse_foot3044,121211
+#define set_inuse(set_inuse3049,121351
+#define set_inuse_and_pinuse(set_inuse_and_pinuse3054,121559
+#define set_size_and_pinuse_of_inuse_chunk(set_size_and_pinuse_of_inuse_chunk3059,121749
+#define mark_inuse_foot(mark_inuse_foot3065,121925
+#define get_mstate_for(get_mstate_for3068,122037
+#define set_inuse(set_inuse3072,122154
+#define set_inuse_and_pinuse(set_inuse_and_pinuse3077,122325
+#define set_size_and_pinuse_of_inuse_chunk(set_size_and_pinuse_of_inuse_chunk3082,122491
+static void pre_fork(void)         { ACQUIRE_LOCK(&(gm)->mutex); }pre_fork3091,122735
+static void post_fork_parent(void) { RELEASE_LOCK(&(gm)->mutex); }post_fork_parent3092,122802
+static void post_fork_child(void)  { INITIAL_LOCK(&(gm)->mutex); }post_fork_child3093,122869
+static int init_mparams(void) {init_mparams3097,122988
+static int change_mparam(int param_number, int value) {change_mparam3187,125880
+static void do_check_any_chunk(mstate m, mchunkptr p) {do_check_any_chunk3214,126555
+static void do_check_top_chunk(mstate m, mchunkptr p) {do_check_top_chunk3220,126747
+static void do_check_mmapped_chunk(mstate m, mchunkptr p) {do_check_mmapped_chunk3234,127273
+static void do_check_inuse_chunk(mstate m, mchunkptr p) {do_check_inuse_chunk3248,127802
+static void do_check_free_chunk(mstate m, mchunkptr p) {do_check_free_chunk3259,128173
+static void do_check_malloced_chunk(mstate m, void* mem, size_t s) {do_check_malloced_chunk3282,128905
+static void do_check_tree(mstate m, tchunkptr t) {do_check_tree3296,129372
+static void do_check_treebin(mstate m, bindex_t i) {do_check_treebin3347,130923
+static void do_check_smallbin(mstate m, bindex_t i) {do_check_smallbin3358,131195
+static int bin_find(mstate m, mchunkptr x) {bin_find3382,131914
+static size_t traverse_and_check(mstate m) {traverse_and_check3418,132838
+static void do_check_malloc_state(mstate m) {do_check_malloc_state3450,133679
+static struct mallinfo internal_mallinfo(mstate m) {internal_mallinfo3482,134545
+static void internal_malloc_stats(mstate m) {internal_malloc_stats3523,135627
+#define insert_small_chunk(insert_small_chunk3565,136920
+#define unlink_small_chunk(unlink_small_chunk3584,137344
+#define unlink_first_small_chunk(unlink_first_small_chunk3610,137986
+#define replace_dv(replace_dv3629,138425
+#define insert_large_chunk(insert_large_chunk3643,138740
+#define unlink_large_chunk(unlink_large_chunk3711,140725
+#define insert_chunk(insert_chunk3784,142471
+#define unlink_chunk(unlink_chunk3788,142623
+#define internal_malloc(internal_malloc3796,142864
+#define internal_free(internal_free3797,142914
+#define internal_malloc(internal_malloc3800,143001
+#define internal_free(internal_free3802,143081
+#define internal_malloc(internal_malloc3805,143186
+#define internal_free(internal_free3806,143228
+static void* mmap_alloc(mstate m, size_t nb) {mmap_alloc3821,143747
+static mchunkptr mmap_resize(mstate m, mchunkptr oldp, size_t nb, int flags) {mmap_resize3853,144823
+static void init_top(mstate m, mchunkptr p, size_t psize) {init_top3891,146221
+static void init_bins(mstate m) {init_bins3906,146744
+static void reset_on_error(mstate m) {reset_on_error3918,147002
+static void* prepend_alloc(mstate m, char* newbase, char* oldbase,prepend_alloc3935,147464
+static void add_segment(mstate m, char* tbase, size_t tsize, flag_t mmapped) {add_segment3977,148713
+static void* sys_alloc(mstate m, size_t nb) {sys_alloc4032,150495
+static size_t release_unused_segments(mstate m) {release_unused_segments4243,157590
+static int sys_trim(mstate m, size_t pad) {sys_trim4290,158998
+static void dispose_chunk(mstate m, mchunkptr p, size_t psize) {dispose_chunk4358,161448
+static void* tmalloc_large(mstate m, size_t nb) {tmalloc_large4429,163307
+static void* tmalloc_small(mstate m, size_t nb) {tmalloc_small4500,165408
+void* dlmalloc(size_t bytes) {dlmalloc4539,166320
+void dlfree(void* mem) {dlfree4677,171082
+#undef fmfm4782,174304
+void* dlcalloc(size_t n_elements, size_t elem_size) {dlcalloc4786,174338
+static mchunkptr try_realloc_chunk(mstate m, mchunkptr p, size_t nb,try_realloc_chunk4806,174932
+static void* internal_memalign(mstate m, size_t alignment, size_t bytes) {internal_memalign4885,177402
+static void** ialloc(mstate m,ialloc4966,180289
+static size_t internal_bulk_free(mstate m, void* array[], size_t nelem) {internal_bulk_free5092,184164
+static void internal_inspect_all(mstate m,internal_inspect_all5136,185298
+void* dlrealloc(void* oldmem, size_t bytes) {dlrealloc5180,186745
+void* dlrealloc_in_place(void* oldmem, size_t bytes) {dlrealloc_in_place5225,187803
+void* dlmemalign(size_t alignment, size_t bytes) {dlmemalign5256,188506
+int dlposix_memalign(void** pp, size_t alignment, size_t bytes) {dlposix_memalign5263,188681
+void* dlvalloc(size_t bytes) {dlvalloc5286,189264
+void* dlpvalloc(size_t bytes) {dlpvalloc5293,189408
+void** dlindependent_calloc(size_t n_elements, size_t elem_size,dlindependent_calloc5300,189602
+void** dlindependent_comalloc(size_t n_elements, size_t sizes[],dlindependent_comalloc5306,189822
+size_t dlbulk_free(void* array[], size_t nelem) {dlbulk_free5311,189989
+void dlmalloc_inspect_all(void(*handler)(void *start,dlmalloc_inspect_all5316,190112
+int dlmalloc_trim(size_t pad) {dlmalloc_trim5329,190533
+size_t dlmalloc_footprint(void) {dlmalloc_footprint5339,190710
+size_t dlmalloc_max_footprint(void) {dlmalloc_max_footprint5343,190771
+size_t dlmalloc_footprint_limit(void) {dlmalloc_footprint_limit5347,190840
+size_t dlmalloc_set_footprint_limit(size_t bytes) {dlmalloc_set_footprint_limit5352,190957
+struct mallinfo dlmallinfo(void) {dlmallinfo5364,191308
+void dlmalloc_stats() {dlmalloc_stats5370,191424
+int dlmallopt(int param_number, int value) {dlmallopt5375,191509
+size_t dlmalloc_usable_size(void* mem) {dlmalloc_usable_size5379,191602
+static mstate init_user_mstate(char* tbase, size_t tsize) {init_user_mstate5394,191900
+mspace create_mspace(size_t capacity, int locked) {create_mspace5417,192636
+mspace create_mspace_with_base(void* base, size_t capacity, int locked) {create_mspace_with_base5436,193235
+int mspace_track_large_chunks(mspace msp, int enable) {mspace_track_large_chunks5450,193669
+size_t destroy_mspace(mspace msp) {destroy_mspace5467,193963
+void* mspace_malloc(mspace msp, size_t bytes) {mspace_malloc5495,194694
+void mspace_free(mspace msp, void* mem) {mspace_free5609,198259
+void* mspace_calloc(mspace msp, size_t n_elements, size_t elem_size) {mspace_calloc5710,201336
+void* mspace_realloc(mspace msp, void* oldmem, size_t bytes) {mspace_realloc5730,201893
+void* mspace_realloc_in_place(mspace msp, void* oldmem, size_t bytes) {mspace_realloc_in_place5775,202993
+void* mspace_memalign(mspace msp, size_t alignment, size_t bytes) {mspace_memalign5807,203779
+void** mspace_independent_calloc(mspace msp, size_t n_elements,mspace_independent_calloc5818,204074
+void** mspace_independent_comalloc(mspace msp, size_t n_elements,mspace_independent_comalloc5829,204415
+size_t mspace_bulk_free(mspace msp, void* array[], size_t nelem) {mspace_bulk_free5839,204703
+void mspace_inspect_all(mspace msp,mspace_inspect_all5844,204852
+int mspace_trim(mspace msp, size_t pad) {mspace_trim5863,205377
+void mspace_malloc_stats(mspace msp) {mspace_malloc_stats5879,205663
+size_t mspace_footprint(mspace msp) {mspace_footprint5890,205862
+size_t mspace_max_footprint(mspace msp) {mspace_max_footprint5902,206066
+size_t mspace_footprint_limit(mspace msp) {mspace_footprint_limit5914,206278
+size_t mspace_set_footprint_limit(mspace msp, size_t bytes) {mspace_set_footprint_limit5927,206542
+struct mallinfo mspace_mallinfo(mspace msp) {mspace_mallinfo5946,207003
+size_t mspace_usable_size(const void* mem) {mspace_usable_size5955,207194
+int mspace_mallopt(int param_number, int value) {mspace_mallopt5964,207376
+
+/home/liudy/Seafile/WorkSpace/software/plasma/common/state/redis.h,940
+#define REDIS_HREDIS_H2,16
+  int service_id;service_id15,249
+  char *addr;addr17,312
+  UT_hash_handle hh;hh19,363
+} service_cache_entry;service_cache_entry20,384
+  task_log_callback callback;callback24,467
+  void *userdata;userdata26,544
+} task_log_callback_data;task_log_callback_data27,562
+struct db_handle_impl {db_handle_impl29,589
+  char *client_type;client_type31,662
+  int64_t client_id;client_id33,734
+  redisAsyncContext *context;context35,817
+  redisAsyncContext *sub_context;sub_context39,995
+  event_loop *loop;loop41,1099
+  int64_t db_index;db_index43,1178
+  service_cache_entry *service_cache;service_cache45,1246
+  redisContext *sync_context;sync_context48,1397
+  UT_array *callback_freelist;callback_freelist50,1488
+  lookup_callback callback;callback55,1582
+  object_id object_id;object_id57,1647
+  void *context;context59,1709
+} lookup_callback_data;lookup_callback_data60,1726
+
+/home/liudy/Seafile/WorkSpace/software/plasma/common/state/object_table.h,75
+typedef void (*lookup_callback)(object_id object_id,lookup_callback7,230
+
+/home/liudy/Seafile/WorkSpace/software/plasma/common/state/task_log.h,141
+#define TASK_LOG_HTASK_LOG_H2,19
+typedef void (*task_log_callback)(task_instance *task_instance, void *userdata);task_log_callback19,792
+
+/home/liudy/Seafile/WorkSpace/software/plasma/common/state/task_table.h,135
+#define TASK_TABLE_HTASK_TABLE_H2,21
+typedef void (*task_table_callback)(task_spec *task, void *context);task_table_callback12,310
+
+/home/liudy/Seafile/WorkSpace/software/plasma/common/state/db.h,79
+#define DB_HDB_H2,13
+typedef struct db_handle_impl db_handle;db_handle6,52
+
+/home/liudy/Seafile/WorkSpace/software/plasma/common/state/redis.c,875
+#define LOG_REDIS_ERR(LOG_REDIS_ERR17,295
+#define CHECK_REDIS_CONNECT(CHECK_REDIS_CONNECT21,498
+db_handle *db_connect(const char *address,db_connect34,1185
+void db_disconnect(db_handle *db) {db_disconnect87,3121
+void db_attach(db_handle *db, event_loop *loop) {db_attach106,3586
+void object_table_add(db_handle *db, unique_id object_id) {object_table_add111,3715
+void object_table_get_entry(redisAsyncContext *c, void *r, void *privdata) {object_table_get_entry119,4009
+void object_table_lookup(db_handle *db,object_table_lookup160,5555
+void task_log_add_task(db_handle *db, task_instance *task_instance) {task_log_add_task175,6139
+void task_log_redis_callback(redisAsyncContext *c,task_log_redis_callback193,7020
+void task_log_register_callback(db_handle *db,task_log_register_callback215,7850
+int get_client_id(db_handle *db) {get_client_id238,8850
+
+/home/liudy/Seafile/WorkSpace/software/plasma/common/lib/python/common_extension.c,1475
+PyObject *CommonError;CommonError9,131
+#define MARSHAL_VERSION MARSHAL_VERSION11,155
+int PyObjectToUniqueID(PyObject *object, object_id *objectid) {PyObjectToUniqueID15,218
+static int PyObjectID_init(PyObjectID *self, PyObject *args, PyObject *kwds) {PyObjectID_init25,508
+PyObject *PyObjectID_make(object_id object_id) {PyObjectID_make41,955
+static PyObject *PyObjectID_id(PyObject *self) {PyObjectID_id48,1215
+static PyMethodDef PyObjectID_methods[] = {PyObjectID_methods54,1425
+static PyMemberDef PyObjectID_members[] = {PyObjectID_members60,1607
+PyTypeObject PyObjectIDType = {PyObjectIDType64,1681
+static int PyTask_init(PyTask *self, PyObject *args, PyObject *kwds) {PyTask_init107,3599
+static void PyTask_dealloc(PyTask *self) {PyTask_dealloc160,5741
+static PyObject *PyTask_function_id(PyObject *self) {PyTask_function_id165,5862
+static PyObject *PyTask_arguments(PyObject *self) {PyTask_arguments170,6027
+static PyObject *PyTask_returns(PyObject *self) {PyTask_returns188,6701
+static PyMethodDef PyTask_methods[] = {PyTask_methods199,7120
+PyTypeObject PyTaskType = {PyTaskType209,7536
+PyObject *PyTask_make(task_spec *task_spec) {PyTask_make252,9612
+#define SIZE_LIMIT SIZE_LIMIT261,9886
+#define NUM_ELEMENTS_LIMIT NUM_ELEMENTS_LIMIT262,9909
+int is_simple_value(PyObject *value, int *num_elements_contained) {is_simple_value279,10791
+PyObject *check_simple_value(PyObject *self, PyObject *args) {check_simple_value326,12431
+
+/home/liudy/Seafile/WorkSpace/software/plasma/common/lib/python/common_extension.h,178
+#define COMMON_EXTENSION_HCOMMON_EXTENSION_H2,27
+  object_id object_id;object_id16,246
+} PyObjectID;PyObjectID17,269
+  task_spec *spec;spec21,317
+} PyTask;PyTask22,336
+
+/home/liudy/Seafile/WorkSpace/software/plasma/common/lib/python/setup.py,477
+common_module = Extension("common",common_module3,56
+                          sources=["common_module.c", "common_extension.c"],sources4,92
+                          include_dirs=["../../", "../../thirdparty"],include_dirs5,169
+                          extra_objects=["../../build/libcommon.a"],extra_objects6,240
+      version="0.1",version10,402
+      description="Common library for Ray",description11,423
+      ext_modules=[common_module])ext_modules12,467
+
+/home/liudy/Seafile/WorkSpace/software/plasma/common/lib/python/common_module.c,158
+static PyMethodDef common_methods[] = {common_methods6,70
+#define PyMODINIT_FUNC PyMODINIT_FUNC13,312
+PyMODINIT_FUNC initcommon(void) {initcommon16,348
+
+/home/liudy/Seafile/WorkSpace/software/plasma/common/.travis/check-git-clang-format-output.sh,0
+
+/home/liudy/Seafile/WorkSpace/software/plasma/common/io.h,188
+#define IO_HIO_H2,13
+enum common_message_type {common_message_type6,48
+  DISCONNECT_CLIENT,DISCONNECT_CLIENT8,105
+  LOG_MESSAGE,LOG_MESSAGE10,164
+  SUBMIT_TASK,SUBMIT_TASK12,226
+
+/home/liudy/Seafile/WorkSpace/software/plasma/common/event_loop.c,651
+#define INITIAL_EVENT_LOOP_SIZE INITIAL_EVENT_LOOP_SIZE6,65
+event_loop *event_loop_create() {event_loop_create8,103
+void event_loop_destroy(event_loop *loop) {event_loop_destroy12,193
+void event_loop_add_file(event_loop *loop,event_loop_add_file23,453
+void event_loop_remove_file(event_loop *loop, int fd) {event_loop_remove_file40,1112
+int64_t event_loop_add_timer(event_loop *loop,event_loop_add_timer44,1238
+void event_loop_remove_timer(event_loop *loop, timer_id timer_id) {event_loop_remove_timer51,1520
+void event_loop_run(event_loop *loop) {event_loop_run56,1683
+void event_loop_stop(event_loop *loop) {event_loop_stop60,1742
+
+/home/liudy/Seafile/WorkSpace/software/plasma/common/event_loop.h,468
+#define EVENT_LOOP_HEVENT_LOOP_H2,21
+typedef long long timer_id;timer_id7,83
+typedef aeEventLoop event_loop;event_loop9,112
+#define EVENT_LOOP_READ EVENT_LOOP_READ12,180
+#define EVENT_LOOP_WRITE EVENT_LOOP_WRITE15,252
+#define EVENT_LOOP_TIMER_DONE EVENT_LOOP_TIMER_DONE18,363
+typedef void (*event_loop_file_handler)(event_loop *loop,event_loop_file_handler25,741
+typedef int (*event_loop_timer_handler)(event_loop *loop,event_loop_timer_handler35,1280
+
+/home/liudy/Seafile/WorkSpace/software/plasma/common/common.h,525
+#define COMMON_HCOMMON_H2,17
+#define LOG_DEBUG(LOG_DEBUG10,139
+#define LOG_DEBUG(LOG_DEBUG12,171
+#define LOG_ERR(LOG_ERR16,287
+#define LOG_INFO(LOG_INFO20,508
+#define CHECK(CHECK23,615
+#define CHECKM(CHECKM31,901
+#define UNIQUE_ID_SIZE UNIQUE_ID_SIZE39,1307
+#define RUN_REDIS_TEST(RUN_REDIS_TEST43,1450
+typedef struct { unsigned char id[UNIQUE_ID_SIZE]; } unique_id;id47,1585
+typedef struct { unsigned char id[UNIQUE_ID_SIZE]; } unique_id;unique_id47,1585
+typedef unique_id object_id;object_id59,1988
+
+/home/liudy/Seafile/WorkSpace/software/plasma/common/test/task_tests.c,199
+SUITE(task_tests);task_tests12,177
+TEST task_test(void) {task_test14,197
+TEST send_task(void) {send_task46,1421
+SUITE(task_tests) {SUITE66,2054
+int main(int argc, char **argv) {main73,2146
+
+/home/liudy/Seafile/WorkSpace/software/plasma/common/test/io_tests.c,228
+SUITE(io_tests);io_tests10,125
+TEST ipc_socket_test(void) {ipc_socket_test12,143
+TEST long_ipc_socket_test(void) {long_ipc_socket_test51,1218
+SUITE(io_tests) {SUITE95,2471
+int main(int argc, char **argv) {main102,2578
+
+/home/liudy/Seafile/WorkSpace/software/plasma/common/test/db_tests.c,1164
+SUITE(db_tests);db_tests15,267
+const char *manager_addr = "127.0.0.1";manager_addr17,285
+int manager_port1 = 12345;manager_port118,325
+int manager_port2 = 12346;manager_port219,352
+char received_addr1[16] = {0};received_addr120,379
+char received_port1[6] = {0};received_port121,410
+char received_addr2[16] = {0};received_addr222,440
+char received_port2[6] = {0};received_port223,471
+void test_callback(object_id object_id,test_callback26,559
+int timeout_handler(event_loop *loop, timer_id timer_id, void *context) {timeout_handler44,1082
+TEST object_table_lookup_test(void) {object_table_lookup_test49,1216
+void task_log_test_callback(task_instance *instance, void *userdata) {task_log_test_callback78,2247
+TEST task_log_test(void) {task_log_test85,2559
+int num_test_callback_called = 0;num_test_callback_called105,3315
+void task_log_all_test_callback(task_instance *instance, void *userdata) {task_log_all_test_callback107,3350
+TEST task_log_all_test(void) {task_log_all_test111,3461
+TEST unique_client_id_test(void) {unique_client_id_test136,4449
+SUITE(db_tests) {SUITE159,4973
+int main(int argc, char **argv) {main171,5343
+
+/home/liudy/Seafile/WorkSpace/software/plasma/common/test/common_tests.c,158
+SUITE(common_tests);common_tests5,44
+TEST sha1_test(void) {sha1_test7,66
+SUITE(common_tests) {SUITE14,221
+int main(int argc, char **argv) {main20,292
+
+/home/liudy/Seafile/WorkSpace/software/plasma/common/test/test.py,1291
+BASE_SIMPLE_OBJECTS = [BASE_SIMPLE_OBJECTS7,71
+LIST_SIMPLE_OBJECTS = [[obj] for obj in BASE_SIMPLE_OBJECTS]LIST_SIMPLE_OBJECTS12,212
+TUPLE_SIMPLE_OBJECTS = [(obj,) for obj in BASE_SIMPLE_OBJECTS]TUPLE_SIMPLE_OBJECTS13,273
+DICT_SIMPLE_OBJECTS = [{(): obj} for obj in BASE_SIMPLE_OBJECTS]DICT_SIMPLE_OBJECTS14,336
+SIMPLE_OBJECTS = (BASE_SIMPLE_OBJECTS +SIMPLE_OBJECTS16,402
+l = []l23,639
+class Foo(object):Foo26,659
+  def __init__(self):__init__27,678
+BASE_COMPLEX_OBJECTS = [999 * "h", 999 * u"h", l, Foo(), 10 * [10 * [10 * [1]]]]BASE_COMPLEX_OBJECTS30,710
+LIST_COMPLEX_OBJECTS = [[obj] for obj in BASE_COMPLEX_OBJECTS]LIST_COMPLEX_OBJECTS32,792
+TUPLE_COMPLEX_OBJECTS = [(obj,) for obj in BASE_COMPLEX_OBJECTS]TUPLE_COMPLEX_OBJECTS33,855
+DICT_COMPLEX_OBJECTS = [{(): obj} for obj in BASE_COMPLEX_OBJECTS]DICT_COMPLEX_OBJECTS34,920
+COMPLEX_OBJECTS = (BASE_COMPLEX_OBJECTS +COMPLEX_OBJECTS36,988
+class TestSerialization(unittest.TestCase):TestSerialization41,1157
+  def test_serialize_by_value(self):test_serialize_by_value43,1202
+class TestObjectID(unittest.TestCase):TestObjectID50,1413
+  def test_create_object_id(self):test_create_object_id52,1453
+class TestTask(unittest.TestCase):TestTask55,1531
+  def test_create_task(self):test_create_task57,1567
+
+/home/liudy/Seafile/WorkSpace/software/plasma/common/test/redis_tests.c,1388
+SUITE(redis_tests);redis_tests14,195
+const char *test_set_format = "SET %s %s";test_set_format16,216
+const char *test_get_format = "GET %s";test_get_format17,259
+const char *test_key = "foo";test_key18,299
+const char *test_value = "bar";test_value19,329
+UT_array *connections = NULL;connections20,361
+int async_redis_socket_test_callback_called = 0;async_redis_socket_test_callback_called22,392
+void async_redis_socket_test_callback(redisAsyncContext *ac,async_redis_socket_test_callback24,442
+TEST redis_socket_test(void) {redis_socket_test39,945
+void redis_read_callback(event_loop *loop, int fd, void *context, int events) {redis_read_callback70,1813
+void redis_accept_callback(event_loop *loop,redis_accept_callback78,2089
+int timeout_handler(event_loop *loop, timer_id timer_id, void *context) {timeout_handler89,2486
+TEST async_redis_socket_test(void) {async_redis_socket_test94,2620
+int logging_test_callback_called = 0;logging_test_callback_called134,3916
+void logging_test_callback(redisAsyncContext *ac, void *r, void *privdata) {logging_test_callback136,3955
+void logging_read_callback(event_loop *loop,logging_read_callback146,4297
+void logging_accept_callback(event_loop *loop,logging_accept_callback157,4651
+TEST logging_test(void) {logging_test168,5058
+SUITE(redis_tests) {SUITE210,6411
+int main(int argc, char **argv) {main221,6732
+
+/home/liudy/Seafile/WorkSpace/software/plasma/common/test/example_task.h,93
+#define EXAMPLE_TASK_HEXAMPLE_TASK_H2,23
+task_spec *example_task(void) {example_task6,66
+
+/home/liudy/Seafile/WorkSpace/software/plasma/common/logging.c,522
+static const char *log_levels[5] = {"DEBUG", "INFO", "WARN", "ERROR", "FATAL"};log_levels11,158
+static const char *log_fmt =log_fmt12,238
+struct ray_logger_impl {ray_logger_impl15,345
+  const char *client_type;client_type17,419
+  int log_level;log_level19,498
+  int is_direct;is_direct21,576
+  void *conn;conn24,701
+ray_logger *init_ray_logger(const char *client_type,init_ray_logger27,719
+void free_ray_logger(ray_logger *logger) {free_ray_logger39,1097
+void ray_log(ray_logger *logger,ray_log43,1159
+
+/home/liudy/Seafile/WorkSpace/software/plasma/common/common.c,233
+const unique_id NIL_ID = {{255, 255, 255, 255, 255, 255, 255, 255, 255, 255,NIL_ID9,125
+unique_id globally_unique_id(void) {globally_unique_id12,282
+char *sha1_to_hex(const unsigned char *sha1, char *buffer) {sha1_to_hex24,579
+
+/home/liudy/Seafile/WorkSpace/software/plasma/common/logging.h,420
+#define LOGGING_HLOGGING_H2,18
+#define RAY_VERBOSE RAY_VERBOSE4,37
+#define RAY_DEBUG RAY_DEBUG5,60
+#define RAY_INFO RAY_INFO6,80
+#define RAY_WARNING RAY_WARNING7,99
+#define RAY_ERROR RAY_ERROR8,121
+#define RAY_FATAL RAY_FATAL9,141
+#define RAY_FUNCTION RAY_FUNCTION12,182
+#define RAY_OBJECT RAY_OBJECT13,214
+#define RAY_TASK RAY_TASK14,242
+typedef struct ray_logger_impl ray_logger;ray_logger16,267
+
+/home/liudy/Seafile/WorkSpace/software/plasma/common/io.c,865
+int bind_inet_sock(const int port) {bind_inet_sock31,857
+int bind_ipc_sock(const char *socket_pathname) {bind_ipc_sock74,2109
+int connect_ipc_sock(const char *socket_pathname) {connect_ipc_sock120,3536
+int accept_client(int socket_fd) {accept_client152,4475
+int write_bytes(int fd, uint8_t *cursor, size_t length) {write_bytes172,5220
+int write_message(int fd, int64_t type, int64_t length, uint8_t *bytes) {write_message206,6366
+int read_bytes(int fd, uint8_t *cursor, size_t length) {read_bytes237,7454
+void read_message(int fd, int64_t *type, int64_t *length, uint8_t **bytes) {read_message279,8929
+void write_log_message(int fd, char *message) {write_log_message305,9586
+char *read_log_message(int fd) {read_log_message313,9960
+void write_formatted_log_message(int socket_fd, const char *format, ...) {write_formatted_log_message322,10147
+
+/home/liudy/Seafile/WorkSpace/software/plasma/common/thirdparty/greatest.h,9184
+#define GREATEST_HGREATEST_H18,818
+#define GREATEST_VERSION_MAJOR GREATEST_VERSION_MAJOR25,890
+#define GREATEST_VERSION_MINOR GREATEST_VERSION_MINOR26,923
+#define GREATEST_VERSION_PATCH GREATEST_VERSION_PATCH27,956
+TEST foo_should_foo(void) {foo_should_foo43,1426
+static void setup_cb(void *data) {setup_cb46,1468
+static void teardown_cb(void *data) {teardown_cb49,1556
+SUITE(suite) {SUITE52,1650
+int run_tests(void) {run_tests63,2134
+int main(int argc, char **argv) {main75,2647
+#define GREATEST_DEFAULT_WIDTH GREATEST_DEFAULT_WIDTH95,3111
+#define GREATEST_STDOUT GREATEST_STDOUT100,3209
+#define GREATEST_USE_ABBREVS GREATEST_USE_ABBREVS105,3340
+#define GREATEST_USE_LONGJMP GREATEST_USE_LONGJMP110,3461
+#define GREATEST_USE_TIME GREATEST_USE_TIME119,3634
+#define GREATEST_FLOAT GREATEST_FLOAT128,3789
+#define GREATEST_FLOAT_FMT GREATEST_FLOAT_FMT129,3819
+typedef struct greatest_suite_info {greatest_suite_info137,3936
+    unsigned int tests_run;tests_run138,3973
+    unsigned int passed;passed139,4001
+    unsigned int failed;failed140,4026
+    unsigned int skipped;skipped141,4051
+    clock_t pre_suite;pre_suite145,4162
+    clock_t post_suite;post_suite146,4185
+    clock_t pre_test;pre_test147,4209
+    clock_t post_test;post_test148,4231
+} greatest_suite_info;greatest_suite_info150,4261
+typedef void (greatest_suite_cb)(void);greatest_suite_cb153,4318
+typedef void (greatest_setup_cb)(void *udata);greatest_setup_cb157,4484
+typedef void (greatest_teardown_cb)(void *udata);greatest_teardown_cb158,4531
+typedef int greatest_equal_cb(const void *exp, const void *got, void *udata);greatest_equal_cb163,4773
+typedef int greatest_printf_cb(const void *t, void *udata);greatest_printf_cb168,5033
+typedef struct greatest_type_info {greatest_type_info172,5204
+    greatest_equal_cb *equal;equal173,5240
+    greatest_printf_cb *print;print174,5270
+} greatest_type_info;greatest_type_info175,5301
+typedef struct greatest_memory_cmp_env {greatest_memory_cmp_env177,5324
+    const unsigned char *exp;exp178,5365
+    const unsigned char *got;got179,5395
+    size_t size;size180,5425
+} greatest_memory_cmp_env;greatest_memory_cmp_env181,5442
+    GREATEST_FLAG_FIRST_FAIL = 0x01,GREATEST_FLAG_FIRST_FAIL188,5641
+    GREATEST_FLAG_LIST_ONLY = 0x02GREATEST_FLAG_LIST_ONLY189,5678
+} greatest_flag_t;greatest_flag_t190,5713
+typedef struct greatest_run_info {greatest_run_info193,5780
+    unsigned char flags;flags194,5815
+    unsigned char verbosity;verbosity195,5840
+    unsigned int tests_run;     /* total test count */tests_run196,5869
+    unsigned int passed;passed199,5965
+    unsigned int failed;failed200,5990
+    unsigned int skipped;skipped201,6015
+    unsigned int assertions;assertions202,6041
+    greatest_suite_info suite;suite205,6110
+    const char *fail_file;fail_file208,6196
+    unsigned int fail_line;fail_line209,6223
+    const char *msg;msg210,6251
+    greatest_setup_cb *setup;setup213,6325
+    void *setup_udata;setup_udata214,6355
+    greatest_teardown_cb *teardown;teardown215,6378
+    void *teardown_udata;teardown_udata216,6414
+    unsigned int col;col219,6497
+    unsigned int width;width220,6519
+    const char *suite_filter;suite_filter223,6588
+    const char *test_filter;test_filter224,6618
+    clock_t begin;begin228,6695
+    clock_t end;end229,6714
+    jmp_buf jump_dest;jump_dest233,6764
+} greatest_run_info;greatest_run_info235,6794
+struct greatest_report_t {greatest_report_t237,6816
+    unsigned int passed;passed239,6883
+    unsigned int failed;failed240,6908
+    unsigned int skipped;skipped241,6933
+    unsigned int assertions;assertions242,6959
+typedef const char *greatest_enum_str_fun(int value);greatest_enum_str_fun250,7174
+#define GREATEST_VA_ARGSGREATEST_VA_ARGS285,8476
+#define GREATEST_SUITE(GREATEST_SUITE294,8570
+#define GREATEST_SUITE_EXTERN(GREATEST_SUITE_EXTERN297,8694
+#define GREATEST_TEST GREATEST_TEST301,8849
+typedef enum greatest_test_res {greatest_test_res304,8960
+    GREATEST_TEST_RES_PASS = 0,GREATEST_TEST_RES_PASS305,8993
+    GREATEST_TEST_RES_FAIL = -1,GREATEST_TEST_RES_FAIL306,9025
+    GREATEST_TEST_RES_SKIP = 1GREATEST_TEST_RES_SKIP307,9058
+} greatest_test_res;greatest_test_res308,9089
+#define GREATEST_RUN_SUITE(GREATEST_RUN_SUITE311,9130
+#define GREATEST_RUN_TEST(GREATEST_RUN_TEST314,9241
+#define GREATEST_IGNORE_TEST(GREATEST_IGNORE_TEST328,10127
+#define GREATEST_RUN_TEST1(GREATEST_RUN_TEST1332,10301
+#define GREATEST_RUN_TESTp(GREATEST_RUN_TESTp343,10934
+#define GREATEST_IS_VERBOSE(GREATEST_IS_VERBOSE356,11602
+#define GREATEST_LIST_ONLY(GREATEST_LIST_ONLY357,11664
+#define GREATEST_FIRST_FAIL(GREATEST_FIRST_FAIL359,11790
+#define GREATEST_FAILURE_ABORT(GREATEST_FAILURE_ABORT361,11917
+#define GREATEST_PASS(GREATEST_PASS365,12103
+#define GREATEST_FAIL(GREATEST_FAIL366,12148
+#define GREATEST_SKIP(GREATEST_SKIP367,12193
+#define GREATEST_ASSERT(GREATEST_ASSERT368,12238
+#define GREATEST_ASSERT_OR_LONGJMP(GREATEST_ASSERT_OR_LONGJMP370,12346
+#define GREATEST_ASSERT_FALSE(GREATEST_ASSERT_FALSE372,12465
+#define GREATEST_ASSERT_EQ(GREATEST_ASSERT_EQ374,12579
+#define GREATEST_ASSERT_EQ_FMT(GREATEST_ASSERT_EQ_FMT376,12705
+#define GREATEST_ASSERT_IN_RANGE(GREATEST_ASSERT_IN_RANGE378,12840
+#define GREATEST_ASSERT_EQUAL_T(GREATEST_ASSERT_EQUAL_T380,12990
+#define GREATEST_ASSERT_STR_EQ(GREATEST_ASSERT_STR_EQ382,13139
+#define GREATEST_ASSERT_STRN_EQ(GREATEST_ASSERT_STRN_EQ384,13269
+#define GREATEST_ASSERT_MEM_EQ(GREATEST_ASSERT_MEM_EQ386,13406
+#define GREATEST_ASSERT_ENUM_EQ(GREATEST_ASSERT_ENUM_EQ388,13542
+#define GREATEST_ASSERTm(GREATEST_ASSERTm395,13846
+#define GREATEST_ASSERT_OR_LONGJMPm(GREATEST_ASSERT_OR_LONGJMPm402,14222
+#define GREATEST_ASSERT_FALSEm(GREATEST_ASSERT_FALSEm409,14589
+#define GREATEST_ASSERT_EQm(GREATEST_ASSERT_EQm416,14956
+#define GREATEST_ASSERT_EQ_FMTm(GREATEST_ASSERT_EQ_FMTm424,15392
+#define GREATEST_ASSERT_ENUM_EQm(GREATEST_ASSERT_ENUM_EQm439,16355
+#define GREATEST_ASSERT_IN_RANGEm(GREATEST_ASSERT_IN_RANGEm454,17365
+#define GREATEST_ASSERT_STR_EQm(GREATEST_ASSERT_STR_EQm475,18774
+#define GREATEST_ASSERT_STRN_EQm(GREATEST_ASSERT_STRN_EQm482,19205
+#define GREATEST_ASSERT_MEM_EQm(GREATEST_ASSERT_MEM_EQm490,19710
+#define GREATEST_ASSERT_EQUAL_Tm(GREATEST_ASSERT_EQUAL_Tm503,20554
+#define GREATEST_PASSm(GREATEST_PASSm518,21529
+#define GREATEST_FAILm(GREATEST_FAILm525,21854
+#define GREATEST_FAIL_WITH_LONGJMP(GREATEST_FAIL_WITH_LONGJMP535,22393
+#define GREATEST_FAIL_WITH_LONGJMPm(GREATEST_FAIL_WITH_LONGJMPm536,22464
+#define GREATEST_SKIPm(GREATEST_SKIPm546,22961
+#define GREATEST_CHECK_CALL(GREATEST_CHECK_CALL553,23333
+#define GREATEST_SET_TIME(GREATEST_SET_TIME562,23874
+#define GREATEST_CLOCK_DIFF(GREATEST_CLOCK_DIFF570,24325
+#define GREATEST_SET_TIME(GREATEST_SET_TIME575,24617
+#define GREATEST_CLOCK_DIFF(GREATEST_CLOCK_DIFF576,24651
+#define GREATEST_SAVE_CONTEXT(GREATEST_SAVE_CONTEXT580,24730
+#define GREATEST_SAVE_CONTEXT(GREATEST_SAVE_CONTEXT585,25026
+#define GREATEST_MAIN_DEFS(GREATEST_MAIN_DEFS591,25275
+#define GREATEST_INIT(GREATEST_INIT918,49306
+#define GREATEST_MAIN_BEGIN(GREATEST_MAIN_BEGIN930,50089
+#define GREATEST_PRINT_REPORT(GREATEST_PRINT_REPORT938,50503
+#define GREATEST_MAIN_END(GREATEST_MAIN_END960,51988
+#define TEST TEST969,52419
+#define SUITE SUITE970,52456
+#define SUITE_EXTERN SUITE_EXTERN971,52494
+#define RUN_TEST RUN_TEST972,52539
+#define RUN_TEST1 RUN_TEST1973,52580
+#define RUN_SUITE RUN_SUITE974,52622
+#define IGNORE_TEST IGNORE_TEST975,52664
+#define ASSERT ASSERT976,52708
+#define ASSERTm ASSERTm977,52747
+#define ASSERT_FALSE ASSERT_FALSE978,52787
+#define ASSERT_EQ ASSERT_EQ979,52832
+#define ASSERT_EQ_FMT ASSERT_EQ_FMT980,52874
+#define ASSERT_IN_RANGE ASSERT_IN_RANGE981,52920
+#define ASSERT_EQUAL_T ASSERT_EQUAL_T982,52969
+#define ASSERT_STR_EQ ASSERT_STR_EQ983,53016
+#define ASSERT_STRN_EQ ASSERT_STRN_EQ984,53062
+#define ASSERT_MEM_EQ ASSERT_MEM_EQ985,53109
+#define ASSERT_ENUM_EQ ASSERT_ENUM_EQ986,53155
+#define ASSERT_FALSEm ASSERT_FALSEm987,53202
+#define ASSERT_EQm ASSERT_EQm988,53248
+#define ASSERT_EQ_FMTm ASSERT_EQ_FMTm989,53291
+#define ASSERT_IN_RANGEm ASSERT_IN_RANGEm990,53338
+#define ASSERT_EQUAL_Tm ASSERT_EQUAL_Tm991,53389
+#define ASSERT_STR_EQm ASSERT_STR_EQm992,53438
+#define ASSERT_STRN_EQm ASSERT_STRN_EQm993,53485
+#define ASSERT_MEM_EQm ASSERT_MEM_EQm994,53534
+#define ASSERT_ENUM_EQm ASSERT_ENUM_EQm995,53581
+#define PASS PASS996,53630
+#define FAIL FAIL997,53667
+#define SKIP SKIP998,53704
+#define PASSm PASSm999,53741
+#define FAILm FAILm1000,53779
+#define SKIPm SKIPm1001,53817
+#define SET_SETUP SET_SETUP1002,53855
+#define SET_TEARDOWN SET_TEARDOWN1003,53900
+#define CHECK_CALL CHECK_CALL1004,53948
+#define RUN_TESTp RUN_TESTp1007,54016
+#define ASSERT_OR_LONGJMP ASSERT_OR_LONGJMP1011,54091
+#define ASSERT_OR_LONGJMPm ASSERT_OR_LONGJMPm1012,54145
+#define FAIL_WITH_LONGJMP FAIL_WITH_LONGJMP1013,54200
+#define FAIL_WITH_LONGJMPm FAIL_WITH_LONGJMPm1014,54254
+
+/home/liudy/Seafile/WorkSpace/software/plasma/common/thirdparty/utstring.h,1455
+#define UTSTRING_HUTSTRING_H27,1217
+#define UTSTRING_VERSION UTSTRING_VERSION29,1237
+#define _UNUSED_ _UNUSED_32,1285
+#define _UNUSED__UNUSED_34,1337
+#define oom(oom43,1454
+    char *d;d47,1502
+    size_t n; /* allocd size */n48,1515
+    size_t i; /* index of first unused byte */i49,1547
+} UT_string;UT_string50,1594
+#define utstring_reserve(utstring_reserve52,1608
+#define utstring_init(utstring_init63,2169
+#define utstring_done(utstring_done70,2486
+#define utstring_free(utstring_free76,2742
+#define utstring_new(utstring_new82,2998
+#define utstring_renew(utstring_renew89,3315
+#define utstring_clear(utstring_clear98,3754
+#define utstring_bincpy(utstring_bincpy104,4010
+#define utstring_concat(utstring_concat112,4388
+#define utstring_len(utstring_len120,4802
+#define utstring_body(utstring_body122,4848
+_UNUSED_ static void utstring_printf_va(UT_string *s, const char *fmt, va_list ap) {utstring_printf_va124,4883
+_UNUSED_ static void utstring_printf(UT_string *s, const char *fmt, ...) {utstring_printf151,5611
+_UNUSED_ static void _utstring_BuildTable(_utstring_BuildTable162,6058
+_UNUSED_ static void _utstring_BuildTableR(_utstring_BuildTableR202,6807
+_UNUSED_ static long _utstring_find(_utstring_find242,7601
+_UNUSED_ static long _utstring_findR(_utstring_findR275,8332
+_UNUSED_ static long utstring_find(utstring_find309,9057
+_UNUSED_ static long utstring_findR(utstring_findR355,10356
+
+/home/liudy/Seafile/WorkSpace/software/plasma/common/thirdparty/utlist.h,4628
+#define UTLIST_HUTLIST_H25,1163
+#define UTLIST_VERSION UTLIST_VERSION27,1181
+#define LDECLTYPE(LDECLTYPE68,2657
+#define NO_DECLTYPENO_DECLTYPE70,2760
+#define NO_DECLTYPENO_DECLTYPE73,2813
+#define LDECLTYPE(LDECLTYPE75,2895
+#define IF_NO_DECLTYPE(IF_NO_DECLTYPE82,3180
+#define LDECLTYPE(LDECLTYPE83,3208
+#define _SV(_SV84,3235
+#define _NEXT(_NEXT85,3332
+#define _NEXTASGN(_NEXTASGN86,3385
+#define _PREVASGN(_PREVASGN88,3546
+#define _RS(_RS89,3648
+#define _CASTASGN(_CASTASGN90,3717
+#define IF_NO_DECLTYPE(IF_NO_DECLTYPE92,3800
+#define _SV(_SV93,3826
+#define _NEXT(_NEXT94,3848
+#define _NEXTASGN(_NEXTASGN95,3891
+#define _PREVASGN(_PREVASGN97,3995
+#define _RS(_RS98,4050
+#define _CASTASGN(_CASTASGN99,4068
+#define LL_SORT(LL_SORT106,4427
+#define LL_SORT2(LL_SORT2109,4555
+#define DL_SORT(DL_SORT170,10195
+#define DL_SORT2(DL_SORT2173,10329
+#define CDL_SORT(CDL_SORT233,15968
+#define CDL_SORT2(CDL_SORT2236,16103
+#define LL_PREPEND(LL_PREPEND312,23243
+#define LL_PREPEND2(LL_PREPEND2315,23372
+#define LL_CONCAT(LL_CONCAT321,23773
+#define LL_CONCAT2(LL_CONCAT2324,23904
+#define LL_APPEND(LL_APPEND336,24887
+#define LL_APPEND2(LL_APPEND2339,25015
+#define LL_DELETE(LL_DELETE352,26095
+#define LL_DELETE2(LL_DELETE2355,26223
+#define LL_COUNT(LL_COUNT371,27594
+#define LL_COUNT2(LL_COUNT2374,27789
+#define LL_FOREACH(LL_FOREACH380,28190
+#define LL_FOREACH2(LL_FOREACH2383,28318
+#define LL_FOREACH_SAFE(LL_FOREACH_SAFE386,28463
+#define LL_FOREACH_SAFE2(LL_FOREACH_SAFE2389,28600
+#define LL_SEARCH_SCALAR(LL_SEARCH_SCALAR392,28767
+#define LL_SEARCH_SCALAR2(LL_SEARCH_SCALAR2395,28912
+#define LL_SEARCH(LL_SEARCH402,29410
+#define LL_SEARCH2(LL_SEARCH2405,29546
+#define LL_REPLACE_ELEM2(LL_REPLACE_ELEM2412,30044
+#define LL_REPLACE_ELEM(LL_REPLACE_ELEM432,31803
+#define LL_PREPEND_ELEM2(LL_PREPEND_ELEM2435,31943
+#define LL_PREPEND_ELEM(LL_PREPEND_ELEM458,34078
+#define LL_APPEND_ELEM2(LL_APPEND_ELEM2461,34218
+#define LL_APPEND_ELEM(LL_APPEND_ELEM473,35286
+#undef LL_CONCAT2LL_CONCAT2479,35514
+#define LL_CONCAT2(LL_CONCAT2480,35532
+#undef LL_APPEND2LL_APPEND2493,36612
+#define LL_APPEND2(LL_APPEND2494,36630
+#undef LL_DELETE2LL_DELETE2506,37613
+#define LL_DELETE2(LL_DELETE2507,37631
+#undef LL_REPLACE_ELEM2LL_REPLACE_ELEM2523,39002
+#define LL_REPLACE_ELEM2(LL_REPLACE_ELEM2524,39026
+#undef LL_PREPEND_ELEM2LL_PREPEND_ELEM2543,40688
+#define LL_PREPEND_ELEM2(LL_PREPEND_ELEM2544,40712
+#define DL_PREPEND(DL_PREPEND571,43016
+#define DL_PREPEND2(DL_PREPEND2574,43150
+#define DL_APPEND(DL_APPEND586,44133
+#define DL_APPEND2(DL_APPEND2589,44266
+#define DL_CONCAT(DL_CONCAT603,45443
+#define DL_CONCAT2(DL_CONCAT2606,45579
+#define DL_DELETE(DL_DELETE621,46853
+#define DL_DELETE2(DL_DELETE2624,46986
+#define DL_COUNT(DL_COUNT642,48551
+#define DL_COUNT2(DL_COUNT2645,48746
+#define DL_FOREACH(DL_FOREACH651,49147
+#define DL_FOREACH2(DL_FOREACH2654,49275
+#define DL_FOREACH_SAFE(DL_FOREACH_SAFE658,49490
+#define DL_FOREACH_SAFE2(DL_FOREACH_SAFE2661,49627
+#define DL_SEARCH_SCALAR DL_SEARCH_SCALAR665,49861
+#define DL_SEARCH DL_SEARCH666,49903
+#define DL_SEARCH_SCALAR2 DL_SEARCH_SCALAR2667,49931
+#define DL_SEARCH2 DL_SEARCH2668,49975
+#define DL_REPLACE_ELEM2(DL_REPLACE_ELEM2670,50006
+#define DL_REPLACE_ELEM(DL_REPLACE_ELEM696,52347
+#define DL_PREPEND_ELEM2(DL_PREPEND_ELEM2699,52493
+#define DL_PREPEND_ELEM(DL_PREPEND_ELEM717,54143
+#define DL_APPEND_ELEM2(DL_APPEND_ELEM2720,54289
+#define DL_APPEND_ELEM(DL_APPEND_ELEM738,55939
+#define CDL_APPEND(CDL_APPEND744,56323
+#define CDL_APPEND2(CDL_APPEND2747,56457
+#define CDL_PREPEND(CDL_PREPEND761,57634
+#define CDL_PREPEND2(CDL_PREPEND2764,57769
+#define CDL_DELETE(CDL_DELETE778,58946
+#define CDL_DELETE2(CDL_DELETE2781,59080
+#define CDL_COUNT(CDL_COUNT792,59966
+#define CDL_COUNT2(CDL_COUNT2795,60161
+#define CDL_FOREACH(CDL_FOREACH801,60562
+#define CDL_FOREACH2(CDL_FOREACH2804,60691
+#define CDL_FOREACH_SAFE(CDL_FOREACH_SAFE807,60862
+#define CDL_FOREACH_SAFE2(CDL_FOREACH_SAFE2810,61011
+#define CDL_SEARCH_SCALAR(CDL_SEARCH_SCALAR815,61351
+#define CDL_SEARCH_SCALAR2(CDL_SEARCH_SCALAR2818,61497
+#define CDL_SEARCH(CDL_SEARCH825,61995
+#define CDL_SEARCH2(CDL_SEARCH2828,62132
+#define CDL_REPLACE_ELEM2(CDL_REPLACE_ELEM2835,62630
+#define CDL_REPLACE_ELEM(CDL_REPLACE_ELEM855,64389
+#define CDL_PREPEND_ELEM2(CDL_PREPEND_ELEM2858,64536
+#define CDL_PREPEND_ELEM(CDL_PREPEND_ELEM875,66004
+#define CDL_APPEND_ELEM2(CDL_APPEND_ELEM2878,66151
+#define CDL_APPEND_ELEM(CDL_APPEND_ELEM892,67328
+
+/home/liudy/Seafile/WorkSpace/software/plasma/common/thirdparty/utarray.h,2439
+#define UTARRAY_HUTARRAY_H27,1215
+#define UTARRAY_VERSION UTARRAY_VERSION29,1234
+#define _UNUSED_ _UNUSED_32,1281
+#define _UNUSED__UNUSED_34,1333
+#define oom(oom42,1476
+typedef void (ctor_f)(void *dst, const void *src);ctor_f45,1507
+typedef void (dtor_f)(void *elt);dtor_f46,1558
+typedef void (init_f)(void *elt);init_f47,1592
+    size_t sz;sz49,1643
+    init_f *init;init50,1658
+    ctor_f *copy;copy51,1676
+    dtor_f *dtor;dtor52,1694
+} UT_icd;UT_icd53,1712
+    unsigned i,n;/* i: index of next available slot, n: num slots */i56,1740
+    unsigned i,n;/* i: index of next available slot, n: num slots */n56,1740
+    UT_icd icd;  /* initializer, copy and destructor functions */icd57,1809
+    char *d;     /* n slots of size icd->sz*/d58,1875
+} UT_array;UT_array59,1921
+#define utarray_init(utarray_init61,1934
+#define utarray_done(utarray_done66,2186
+#define utarray_new(utarray_new79,3078
+#define utarray_free(utarray_free85,3410
+#define utarray_reserve(utarray_reserve90,3662
+#define utarray_push_back(utarray_push_back100,4314
+#define utarray_pop_back(utarray_pop_back106,4646
+#define utarray_extend_back(utarray_extend_back111,4898
+#define utarray_len(utarray_len118,5310
+#define utarray_eltptr(utarray_eltptr120,5343
+#define _utarray_eltptr(_utarray_eltptr121,5418
+#define utarray_insert(utarray_insert123,5479
+#define utarray_inserta(utarray_inserta135,6291
+#define utarray_resize(utarray_resize156,7826
+#define utarray_concat(utarray_concat177,9363
+#define utarray_erase(utarray_erase181,9535
+#define utarray_renew(utarray_renew195,10507
+#define utarray_clear(utarray_clear200,10759
+#define utarray_sort(utarray_sort212,11571
+#define utarray_find(utarray_find216,11743
+#define utarray_front(utarray_front218,11817
+#define utarray_next(utarray_next219,11885
+#define utarray_prev(utarray_prev220,12035
+#define utarray_back(utarray_back221,12173
+#define utarray_eltidx(utarray_eltidx222,12247
+static void utarray_str_cpy(void *dst, const void *src) {utarray_str_cpy225,12419
+static void utarray_str_dtor(void *elt) {utarray_str_dtor229,12580
+static const UT_icd ut_str_icd _UNUSED_ = {sizeof(char*),NULL,utarray_str_cpy,utarray_str_dtor};_UNUSED_233,12687
+static const UT_icd ut_int_icd _UNUSED_ = {sizeof(int),NULL,NULL,NULL};_UNUSED_234,12784
+static const UT_icd ut_ptr_icd _UNUSED_ = {sizeof(void*),NULL,NULL,NULL};_UNUSED_235,12856
+
+/home/liudy/Seafile/WorkSpace/software/plasma/common/thirdparty/hiredis/net.c,1469
+static void redisContextCloseFd(redisContext *c) {redisContextCloseFd60,2403
+static void __redisSetErrorFromErrno(redisContext *c, int type, const char *prefix) {__redisSetErrorFromErrno67,2532
+static int redisSetReuseAddr(redisContext *c) {redisSetReuseAddr77,2852
+static int redisCreateSocket(redisContext *c, int type) {redisCreateSocket87,3137
+static int redisSetBlocking(redisContext *c, int blocking) {redisSetBlocking102,3506
+int redisKeepAlive(redisContext *c, int interval) {redisKeepAlive127,4181
+static int redisSetTcpNoDelay(redisContext *c) {redisSetTcpNoDelay169,5330
+#define __MAX_MSEC __MAX_MSEC179,5640
+static int redisContextTimeoutMsec(redisContext *c, long *result)redisContextTimeoutMsec181,5688
+static int redisContextWaitReady(redisContext *c, long msec) {redisContextWaitReady204,6246
+int redisCheckSocketError(redisContext *c) {redisCheckSocketError235,7040
+int redisContextSetTimeout(redisContext *c, const struct timeval tv) {redisContextSetTimeout253,7465
+static int _redisContextConnectTcp(redisContext *c, const char *addr, int port,_redisContextConnectTcp265,7922
+int redisContextConnectTcp(redisContext *c, const char *addr, int port,redisContextConnectTcp418,13087
+int redisContextConnectBindTcp(redisContext *c, const char *addr, int port,redisContextConnectBindTcp423,13288
+int redisContextConnectUnix(redisContext *c, const char *path, const struct timeval *timeout) {redisContextConnectUnix429,13560
+
+/home/liudy/Seafile/WorkSpace/software/plasma/common/thirdparty/hiredis/examples/example.c,44
+int main(int argc, char **argv) {main7,82
+
+/home/liudy/Seafile/WorkSpace/software/plasma/common/thirdparty/hiredis/examples/example-ae.c,348
+static aeEventLoop *loop;loop11,220
+void getCallback(redisAsyncContext *c, void *r, void *privdata) {getCallback13,247
+void connectCallback(const redisAsyncContext *c, int status) {connectCallback22,517
+void disconnectCallback(const redisAsyncContext *c, int status) {disconnectCallback32,730
+int main (int argc, char **argv) {main43,967
+
+/home/liudy/Seafile/WorkSpace/software/plasma/common/thirdparty/hiredis/examples/example-qt.cpp,167
+void getCallback(redisAsyncContext *, void * r, void * privdata) {getCallback9,114
+void ExampleQt::run() {run20,411
+int main (int argc, char **argv) {main36,786
+
+/home/liudy/Seafile/WorkSpace/software/plasma/common/thirdparty/hiredis/examples/example-macosx.c,310
+void getCallback(redisAsyncContext *c, void *r, void *privdata) {getCallback12,219
+void connectCallback(const redisAsyncContext *c, int status) {connectCallback21,489
+void disconnectCallback(const redisAsyncContext *c, int status) {disconnectCallback29,679
+int main (int argc, char **argv) {main38,917
+
+/home/liudy/Seafile/WorkSpace/software/plasma/common/thirdparty/hiredis/examples/example-ivykis.c,310
+void getCallback(redisAsyncContext *c, void *r, void *privdata) {getCallback10,150
+void connectCallback(const redisAsyncContext *c, int status) {connectCallback19,420
+void disconnectCallback(const redisAsyncContext *c, int status) {disconnectCallback27,610
+int main (int argc, char **argv) {main35,806
+
+/home/liudy/Seafile/WorkSpace/software/plasma/common/thirdparty/hiredis/examples/example-qt.h,387
+#define __HIREDIS_EXAMPLE_QT_H__HIREDIS_EXAMPLE_QT_H2,31
+class ExampleQt : public QObject {ExampleQt6,89
+        ExampleQt(const char * value, QObject * parent = 0)ExampleQt11,151
+        void finish() { emit finished(); }finish21,352
+        const char * m_value;m_value24,409
+        redisAsyncContext * m_ctx;m_ctx25,439
+        RedisQtAdapter m_adapter;m_adapter26,474
+
+/home/liudy/Seafile/WorkSpace/software/plasma/common/thirdparty/hiredis/examples/example-libevent.c,310
+void getCallback(redisAsyncContext *c, void *r, void *privdata) {getCallback10,152
+void connectCallback(const redisAsyncContext *c, int status) {connectCallback19,422
+void disconnectCallback(const redisAsyncContext *c, int status) {disconnectCallback27,612
+int main (int argc, char **argv) {main35,808
+
+/home/liudy/Seafile/WorkSpace/software/plasma/common/thirdparty/hiredis/examples/example-libuv.c,310
+void getCallback(redisAsyncContext *c, void *r, void *privdata) {getCallback10,149
+void connectCallback(const redisAsyncContext *c, int status) {connectCallback19,419
+void disconnectCallback(const redisAsyncContext *c, int status) {disconnectCallback27,609
+int main (int argc, char **argv) {main35,805
+
+/home/liudy/Seafile/WorkSpace/software/plasma/common/thirdparty/hiredis/examples/example-glib.c,293
+static GMainLoop *mainloop;mainloop7,89
+connect_cb (const redisAsyncContext *ac G_GNUC_UNUSED,connect_cb10,130
+disconnect_cb (const redisAsyncContext *ac G_GNUC_UNUSED,disconnect_cb22,408
+command_cb(redisAsyncContext *ac,command_cb34,693
+main (gint argc     G_GNUC_UNUSED,main48,931
+
+/home/liudy/Seafile/WorkSpace/software/plasma/common/thirdparty/hiredis/examples/example-libev.c,310
+void getCallback(redisAsyncContext *c, void *r, void *privdata) {getCallback10,149
+void connectCallback(const redisAsyncContext *c, int status) {connectCallback19,419
+void disconnectCallback(const redisAsyncContext *c, int status) {disconnectCallback27,609
+int main (int argc, char **argv) {main35,805
+
+/home/liudy/Seafile/WorkSpace/software/plasma/common/thirdparty/hiredis/net.h,67
+#define __NET_H__NET_H36,1911
+#define AF_LOCAL AF_LOCAL41,1969
+
+/home/liudy/Seafile/WorkSpace/software/plasma/common/thirdparty/hiredis/dict.h,1897
+#define __DICT_H__DICT_H37,1940
+#define DICT_OK DICT_OK39,1958
+#define DICT_ERR DICT_ERR40,1976
+#define DICT_NOTUSED(DICT_NOTUSED43,2049
+typedef struct dictEntry {dictEntry45,2085
+    void *key;key46,2112
+    void *val;val47,2127
+    struct dictEntry *next;next48,2142
+} dictEntry;dictEntry49,2170
+typedef struct dictType {dictType51,2184
+    unsigned int (*hashFunction)(const void *key);hashFunction52,2210
+    void *(*keyDup)(void *privdata, const void *key);keyDup53,2261
+    void *(*valDup)(void *privdata, const void *obj);valDup54,2315
+    int (*keyCompare)(void *privdata, const void *key1, const void *key2);keyCompare55,2369
+    void (*keyDestructor)(void *privdata, void *key);keyDestructor56,2444
+    void (*valDestructor)(void *privdata, void *obj);valDestructor57,2498
+} dictType;dictType58,2552
+typedef struct dict {dict60,2565
+    dictEntry **table;table61,2587
+    dictType *type;type62,2610
+    unsigned long size;size63,2630
+    unsigned long sizemask;sizemask64,2654
+    unsigned long used;used65,2682
+    void *privdata;privdata66,2706
+} dict;dict67,2726
+typedef struct dictIterator {dictIterator69,2735
+    dict *ht;ht70,2765
+    int index;index71,2779
+    dictEntry *entry, *nextEntry;entry72,2794
+    dictEntry *entry, *nextEntry;nextEntry72,2794
+} dictIterator;dictIterator73,2828
+#define DICT_HT_INITIAL_SIZE DICT_HT_INITIAL_SIZE76,2896
+#define dictFreeEntryVal(dictFreeEntryVal79,3013
+#define dictSetHashVal(dictSetHashVal83,3153
+#define dictFreeEntryKey(dictFreeEntryKey90,3352
+#define dictSetHashKey(dictSetHashKey94,3492
+#define dictCompareHashKeys(dictCompareHashKeys101,3691
+#define dictHashKey(dictHashKey106,3861
+#define dictGetEntryKey(dictGetEntryKey108,3921
+#define dictGetEntryVal(dictGetEntryVal109,3961
+#define dictSlots(dictSlots110,4001
+#define dictSize(dictSize111,4036
+
+/home/liudy/Seafile/WorkSpace/software/plasma/common/thirdparty/hiredis/fmacros.h,250
+#define __HIREDIS_FMACRO_H__HIREDIS_FMACRO_H2,27
+#define _BSD_SOURCE_BSD_SOURCE5,78
+#define _DEFAULT_SOURCE_DEFAULT_SOURCE6,98
+#define _POSIX_C_SOURCE _POSIX_C_SOURCE14,206
+#define _XOPEN_SOURCE _XOPEN_SOURCE17,291
+#define _OSX_OSX22,376
+
+/home/liudy/Seafile/WorkSpace/software/plasma/common/thirdparty/hiredis/dict.c,1258
+static unsigned int dictGenHashFunction(const unsigned char *buf, int len) {dictGenHashFunction53,2508
+static void _dictReset(dict *ht) {_dictReset65,2924
+static dict *dictCreate(dictType *type, void *privDataPtr) {dictCreate73,3072
+static int _dictInit(dict *ht, dictType *type, void *privDataPtr) {_dictInit80,3255
+static int dictExpand(dict *ht, unsigned long size) {dictExpand88,3456
+static int dictAdd(dict *ht, void *key, void *val) {dictAdd135,4846
+static int dictReplace(dict *ht, void *key, void *val) {dictReplace160,5624
+static int dictDelete(dict *ht, const void *key) {dictDelete182,6451
+static int _dictClear(dict *ht) {_dictClear213,7212
+static void dictRelease(dict *ht) {dictRelease238,7863
+static dictEntry *dictFind(dict *ht, const void *key) {dictFind243,7936
+static dictIterator *dictGetIterator(dict *ht) {dictGetIterator258,8275
+static dictEntry *dictNext(dictIterator *iter) {dictNext268,8486
+static void dictReleaseIterator(dictIterator *iter) {dictReleaseIterator288,9088
+static int _dictExpandIfNeeded(dict *ht) {_dictExpandIfNeeded295,9281
+static unsigned long _dictNextPower(unsigned long size) {_dictNextPower306,9661
+static int _dictKeyIndex(dict *ht, const void *key) {_dictKeyIndex320,10042
+
+/home/liudy/Seafile/WorkSpace/software/plasma/common/thirdparty/hiredis/sds.h,2252
+#define __SDS_H__SDS_H34,1744
+#define SDS_MAX_PREALLOC SDS_MAX_PREALLOC36,1761
+typedef char *sds;sds42,1863
+struct __attribute__ ((__packed__)) sdshdr5 {sdshdr546,2023
+    unsigned char flags; /* 3 lsb of type, and 5 msb of string length */flags47,2069
+    char buf[];buf48,2142
+struct __attribute__ ((__packed__)) sdshdr8 {sdshdr850,2161
+    uint8_t len; /* used */len51,2207
+    uint8_t alloc; /* excluding the header and null terminator */alloc52,2235
+    unsigned char flags; /* 3 lsb of type, 5 unused bits */flags53,2301
+    char buf[];buf54,2361
+struct __attribute__ ((__packed__)) sdshdr16 {sdshdr1656,2380
+    uint16_t len; /* used */len57,2427
+    uint16_t alloc; /* excluding the header and null terminator */alloc58,2456
+    unsigned char flags; /* 3 lsb of type, 5 unused bits */flags59,2523
+    char buf[];buf60,2583
+struct __attribute__ ((__packed__)) sdshdr32 {sdshdr3262,2602
+    uint32_t len; /* used */len63,2649
+    uint32_t alloc; /* excluding the header and null terminator */alloc64,2678
+    unsigned char flags; /* 3 lsb of type, 5 unused bits */flags65,2745
+    char buf[];buf66,2805
+struct __attribute__ ((__packed__)) sdshdr64 {sdshdr6468,2824
+    uint64_t len; /* used */len69,2871
+    uint64_t alloc; /* excluding the header and null terminator */alloc70,2900
+    unsigned char flags; /* 3 lsb of type, 5 unused bits */flags71,2967
+    char buf[];buf72,3027
+#define SDS_TYPE_5 SDS_TYPE_575,3047
+#define SDS_TYPE_8 SDS_TYPE_876,3069
+#define SDS_TYPE_16 SDS_TYPE_1677,3091
+#define SDS_TYPE_32 SDS_TYPE_3278,3113
+#define SDS_TYPE_64 SDS_TYPE_6479,3135
+#define SDS_TYPE_MASK SDS_TYPE_MASK80,3157
+#define SDS_TYPE_BITS SDS_TYPE_BITS81,3181
+#define SDS_HDR_VAR(SDS_HDR_VAR82,3205
+#define SDS_HDR(SDS_HDR83,3307
+#define SDS_TYPE_5_LEN(SDS_TYPE_5_LEN84,3383
+static inline size_t sdslen(const sds s) {sdslen86,3431
+static inline size_t sdsavail(const sds s) {sdsavail103,3889
+static inline void sdssetlen(sds s, size_t newlen) {sdssetlen129,4517
+static inline void sdsinclen(sds s, size_t inc) {sdsinclen153,5181
+static inline size_t sdsalloc(const sds s) {sdsalloc179,5941
+static inline void sdssetalloc(sds s, size_t newlen) {sdssetalloc196,6409
+
+/home/liudy/Seafile/WorkSpace/software/plasma/common/thirdparty/hiredis/hiredis.c,4007
+static redisReplyObjectFunctions defaultFunctions = {defaultFunctions54,2485
+static redisReply *createReplyObject(int type) {createReplyObject63,2684
+void freeReplyObject(void *reply) {freeReplyObject74,2880
+static void *createStringObject(const redisReadTask *task, char *str, size_t len) {createStringObject102,3518
+static void *createArrayObject(const redisReadTask *task, int elements) {createArrayObject134,4256
+static void *createIntegerObject(const redisReadTask *task, long long value) {createIntegerObject159,4840
+static void *createNilObject(const redisReadTask *task) {createNilObject176,5236
+static uint32_t countDigits(uint64_t v) {countDigits193,5731
+static size_t bulklen(size_t len) {bulklen206,6068
+int redisvFormatCommand(char **target, const char *format, va_list ap) {redisvFormatCommand210,6146
+int redisFormatCommand(char **target, const char *format, ...) {redisFormatCommand456,13994
+int redisFormatSdsCommandArgv(sds *target, int argc, const char **argv,redisFormatSdsCommandArgv477,14691
+void redisFreeSdsCommand(sds cmd) {redisFreeSdsCommand521,15795
+int redisFormatCommandArgv(char **target, int argc, const char **argv, const size_t *argvlen) {redisFormatCommandArgv530,16103
+void redisFreeCommand(char *cmd) {redisFreeCommand568,17116
+void __redisSetError(redisContext *c, int type, const char *str) {__redisSetError572,17169
+redisReader *redisReaderCreate(void) {redisReaderCreate588,17642
+static redisContext *redisContextInit(void) {redisContextInit592,17746
+void redisFree(redisContext *c) {redisFree616,18223
+int redisFreeKeepFd(redisContext *c) {redisFreeKeepFd636,18679
+int redisReconnect(redisContext *c) {redisReconnect643,18790
+redisContext *redisConnect(const char *ip, int port) {redisConnect674,19836
+redisContext *redisConnectWithTimeout(const char *ip, int port, const struct timeval tv) {redisConnectWithTimeout686,20072
+redisContext *redisConnectNonBlock(const char *ip, int port) {redisConnectNonBlock698,20343
+redisContext *redisConnectBindNonBlock(const char *ip, int port,redisConnectBindNonBlock710,20588
+redisContext *redisConnectBindNonBlockWithReuse(const char *ip, int port,redisConnectBindNonBlockWithReuse718,20868
+redisContext *redisConnectUnix(const char *path) {redisConnectUnix727,21199
+redisContext *redisConnectUnixWithTimeout(const char *path, const struct timeval tv) {redisConnectUnixWithTimeout739,21429
+redisContext *redisConnectUnixNonBlock(const char *path) {redisConnectUnixNonBlock751,21694
+redisContext *redisConnectFd(int fd) {redisConnectFd763,21933
+int redisSetTimeout(redisContext *c, const struct timeval tv) {redisSetTimeout776,22194
+int redisEnableKeepAlive(redisContext *c) {redisEnableKeepAlive783,22395
+int redisBufferRead(redisContext *c) {redisBufferRead794,22818
+int redisBufferWrite(redisContext *c, int *done) {redisBufferWrite831,23996
+int redisGetReplyFromReader(redisContext *c, void **reply) {redisGetReplyFromReader862,24987
+int redisGetReply(redisContext *c, void **reply) {redisGetReply870,25226
+int __redisAppendCommand(redisContext *c, const char *cmd, size_t len) {__redisAppendCommand907,26326
+int redisAppendFormattedCommand(redisContext *c, const char *cmd, size_t len) {redisAppendFormattedCommand920,26620
+int redisvAppendCommand(redisContext *c, const char *format, va_list ap) {redisvAppendCommand929,26815
+int redisAppendCommand(redisContext *c, const char *format, ...) {redisAppendCommand951,27346
+int redisAppendCommandArgv(redisContext *c, int argc, const char **argv, const size_t *argvlen) {redisAppendCommandArgv961,27547
+static void *__redisBlockForReply(redisContext *c) {__redisBlockForReply991,28524
+void *redisvCommand(redisContext *c, const char *format, va_list ap) {redisvCommand1002,28751
+void *redisCommand(redisContext *c, const char *format, ...) {redisCommand1008,28936
+void *redisCommandArgv(redisContext *c, int argc, const char **argv, const size_t *argvlen) {redisCommandArgv1017,29141
+
+/home/liudy/Seafile/WorkSpace/software/plasma/common/thirdparty/hiredis/adapters/qt.h,1132
+#define __HIREDIS_QT_H____HIREDIS_QT_H__27,1365
+class RedisQtAdapter : public QObject {RedisQtAdapter37,1623
+    void RedisQtAddRead(void * adapter) {RedisQtAddRead42,1689
+    void RedisQtDelRead(void * adapter) {RedisQtDelRead48,1840
+    void RedisQtAddWrite(void * adapter) {RedisQtAddWrite54,1991
+    void RedisQtDelWrite(void * adapter) {RedisQtDelWrite60,2144
+    void RedisQtCleanup(void * adapter) {RedisQtCleanup66,2297
+        RedisQtAdapter(QObject * parent = 0)RedisQtAdapter72,2449
+        ~RedisQtAdapter() {~RedisQtAdapter75,2562
+        int setContext(redisAsyncContext * ac) {setContext81,2684
+        void addRead() {addRead96,3176
+        void delRead() {delRead102,3398
+        void addWrite() {addWrite108,3518
+        void delWrite() {delWrite114,3746
+        void cleanup() {cleanup120,3870
+        void read() { redisAsyncHandleRead(m_ctx); }read126,3972
+        void write() { redisAsyncHandleWrite(m_ctx); }write127,4025
+        redisAsyncContext * m_ctx;m_ctx130,4094
+        QSocketNotifier * m_read;m_read131,4129
+        QSocketNotifier * m_write;m_write132,4163
+
+/home/liudy/Seafile/WorkSpace/software/plasma/common/thirdparty/hiredis/adapters/libevent.h,1019
+#define __HIREDIS_LIBEVENT_H____HIREDIS_LIBEVENT_H__32,1645
+typedef struct redisLibeventEvents {redisLibeventEvents37,1742
+    redisAsyncContext *context;context38,1779
+    struct event rev, wev;rev39,1811
+    struct event rev, wev;wev39,1811
+} redisLibeventEvents;redisLibeventEvents40,1838
+static void redisLibeventReadEvent(int fd, short event, void *arg) {redisLibeventReadEvent42,1862
+static void redisLibeventWriteEvent(int fd, short event, void *arg) {redisLibeventWriteEvent48,2059
+static void redisLibeventAddRead(void *privdata) {redisLibeventAddRead54,2258
+static void redisLibeventDelRead(void *privdata) {redisLibeventDelRead59,2402
+static void redisLibeventAddWrite(void *privdata) {redisLibeventAddWrite64,2541
+static void redisLibeventDelWrite(void *privdata) {redisLibeventDelWrite69,2686
+static void redisLibeventCleanup(void *privdata) {redisLibeventCleanup74,2826
+static int redisLibeventAttach(redisAsyncContext *ac, struct event_base *base) {redisLibeventAttach81,3002
+
+/home/liudy/Seafile/WorkSpace/software/plasma/common/thirdparty/hiredis/adapters/glib.h,875
+#define __HIREDIS_GLIB_H____HIREDIS_GLIB_H__2,27
+    GSource source;source11,138
+    redisAsyncContext *ac;ac12,158
+    GPollFD poll_fd;poll_fd13,185
+} RedisSource;RedisSource14,206
+redis_source_add_read (gpointer data)redis_source_add_read17,234
+redis_source_del_read (gpointer data)redis_source_del_read26,471
+redis_source_add_write (gpointer data)redis_source_add_write35,709
+redis_source_del_write (gpointer data)redis_source_del_write44,948
+redis_source_cleanup (gpointer data)redis_source_cleanup53,1188
+redis_source_prepare (GSource *source,redis_source_prepare72,1676
+redis_source_check (GSource *source)redis_source_check81,1908
+redis_source_dispatch (GSource      *source,redis_source_dispatch88,2077
+redis_source_finalize (GSource *source)redis_source_finalize112,2642
+redis_source_new (redisAsyncContext *ac)redis_source_new123,2880
+
+/home/liudy/Seafile/WorkSpace/software/plasma/common/thirdparty/hiredis/adapters/libuv.h,907
+#define __HIREDIS_LIBUV_H____HIREDIS_LIBUV_H__2,28
+typedef struct redisLibuvEvents {redisLibuvEvents9,159
+  redisAsyncContext* context;context10,193
+  uv_poll_t          handle;handle11,223
+  int                events;events12,252
+} redisLibuvEvents;redisLibuvEvents13,281
+static void redisLibuvPoll(uv_poll_t* handle, int status, int events) {redisLibuvPoll16,303
+static void redisLibuvAddRead(void *privdata) {redisLibuvAddRead32,620
+static void redisLibuvDelRead(void *privdata) {redisLibuvDelRead41,811
+static void redisLibuvAddWrite(void *privdata) {redisLibuvAddWrite54,1069
+static void redisLibuvDelWrite(void *privdata) {redisLibuvDelWrite63,1261
+static void on_close(uv_handle_t* handle) {on_close76,1520
+static void redisLibuvCleanup(void *privdata) {redisLibuvCleanup83,1637
+static int redisLibuvAttach(redisAsyncContext* ac, uv_loop_t* loop) {redisLibuvAttach90,1791
+
+/home/liudy/Seafile/WorkSpace/software/plasma/common/thirdparty/hiredis/adapters/ivykis.h,847
+#define __HIREDIS_IVYKIS_H____HIREDIS_IVYKIS_H__2,29
+typedef struct redisIvykisEvents {redisIvykisEvents7,121
+    redisAsyncContext *context;context8,156
+    struct iv_fd fd;fd9,188
+} redisIvykisEvents;redisIvykisEvents10,209
+static void redisIvykisReadEvent(void *arg) {redisIvykisReadEvent12,231
+static void redisIvykisWriteEvent(void *arg) {redisIvykisWriteEvent17,374
+static void redisIvykisAddRead(void *privdata) {redisIvykisAddRead22,519
+static void redisIvykisDelRead(void *privdata) {redisIvykisDelRead27,684
+static void redisIvykisAddWrite(void *privdata) {redisIvykisAddWrite32,833
+static void redisIvykisDelWrite(void *privdata) {redisIvykisDelWrite37,1001
+static void redisIvykisCleanup(void *privdata) {redisIvykisCleanup42,1152
+static int redisIvykisAttach(redisAsyncContext *ac) {redisIvykisAttach49,1305
+
+/home/liudy/Seafile/WorkSpace/software/plasma/common/thirdparty/hiredis/adapters/libev.h,1051
+#define __HIREDIS_LIBEV_H____HIREDIS_LIBEV_H__32,1642
+typedef struct redisLibevEvents {redisLibevEvents39,1776
+    redisAsyncContext *context;context40,1810
+    struct ev_loop *loop;loop41,1842
+    int reading, writing;reading42,1868
+    int reading, writing;writing42,1868
+    ev_io rev, wev;rev43,1894
+    ev_io rev, wev;wev43,1894
+} redisLibevEvents;redisLibevEvents44,1914
+static void redisLibevReadEvent(EV_P_ ev_io *watcher, int revents) {redisLibevReadEvent46,1935
+static void redisLibevWriteEvent(EV_P_ ev_io *watcher, int revents) {redisLibevWriteEvent56,2172
+static void redisLibevAddRead(void *privdata) {redisLibevAddRead66,2411
+static void redisLibevDelRead(void *privdata) {redisLibevDelRead76,2660
+static void redisLibevAddWrite(void *privdata) {redisLibevAddWrite86,2907
+static void redisLibevDelWrite(void *privdata) {redisLibevDelWrite96,3157
+static void redisLibevCleanup(void *privdata) {redisLibevCleanup106,3405
+static int redisLibevAttach(EV_P_ redisAsyncContext *ac) {redisLibevAttach113,3591
+
+/home/liudy/Seafile/WorkSpace/software/plasma/common/thirdparty/hiredis/adapters/macosx.h,996
+#define __HIREDIS_MACOSX_H____HIREDIS_MACOSX_H__7,158
+    redisAsyncContext *context;context15,296
+    CFSocketRef socketRef;socketRef16,328
+    CFRunLoopSourceRef sourceRef;sourceRef17,355
+} RedisRunLoop;RedisRunLoop18,389
+static int freeRedisRunLoop(RedisRunLoop* redisRunLoop) {freeRedisRunLoop20,406
+static void redisMacOSAddRead(void *privdata) {redisMacOSAddRead35,889
+static void redisMacOSDelRead(void *privdata) {redisMacOSDelRead40,1075
+static void redisMacOSAddWrite(void *privdata) {redisMacOSAddWrite45,1262
+static void redisMacOSDelWrite(void *privdata) {redisMacOSDelWrite50,1450
+static void redisMacOSCleanup(void *privdata) {redisMacOSCleanup55,1639
+static void redisMacOSAsyncCallback(CFSocketRef __unused s, CFSocketCallBackType callbackType, CFDataRef __unused address, const void __unused *data, void *info) {redisMacOSAsyncCallback60,1784
+static int redisMacOSAttach(redisAsyncContext *redisAsyncCtx, CFRunLoopRef runLoop) {redisMacOSAttach77,2282
+
+/home/liudy/Seafile/WorkSpace/software/plasma/common/thirdparty/hiredis/adapters/ae.h,985
+#define __HIREDIS_AE_H____HIREDIS_AE_H__32,1639
+typedef struct redisAeEvents {redisAeEvents38,1750
+    redisAsyncContext *context;context39,1781
+    aeEventLoop *loop;loop40,1813
+    int fd;fd41,1836
+    int reading, writing;reading42,1848
+    int reading, writing;writing42,1848
+} redisAeEvents;redisAeEvents43,1874
+static void redisAeReadEvent(aeEventLoop *el, int fd, void *privdata, int mask) {redisAeReadEvent45,1892
+static void redisAeWriteEvent(aeEventLoop *el, int fd, void *privdata, int mask) {redisAeWriteEvent52,2107
+static void redisAeAddRead(void *privdata) {redisAeAddRead59,2324
+static void redisAeDelRead(void *privdata) {redisAeDelRead68,2577
+static void redisAeAddWrite(void *privdata) {redisAeAddWrite77,2810
+static void redisAeDelWrite(void *privdata) {redisAeDelWrite86,3065
+static void redisAeCleanup(void *privdata) {redisAeCleanup95,3299
+static int redisAeAttach(aeEventLoop *loop, redisAsyncContext *ac) {redisAeAttach102,3470
+
+/home/liudy/Seafile/WorkSpace/software/plasma/common/thirdparty/hiredis/sdsalloc.h,103
+#define s_malloc s_malloc40,2022
+#define s_realloc s_realloc41,2046
+#define s_free s_free42,2072
+
+/home/liudy/Seafile/WorkSpace/software/plasma/common/thirdparty/hiredis/hiredis.h,2287
+#define __HIREDIS_H__HIREDIS_H35,1843
+#define HIREDIS_MAJOR HIREDIS_MAJOR42,2038
+#define HIREDIS_MINOR HIREDIS_MINOR43,2062
+#define HIREDIS_PATCH HIREDIS_PATCH44,2087
+#define HIREDIS_SONAME HIREDIS_SONAME45,2111
+#define REDIS_BLOCK REDIS_BLOCK49,2273
+#define REDIS_CONNECTED REDIS_CONNECTED53,2431
+#define REDIS_DISCONNECTING REDIS_DISCONNECTING59,2720
+#define REDIS_FREEING REDIS_FREEING63,2862
+#define REDIS_IN_CALLBACK REDIS_IN_CALLBACK66,2948
+#define REDIS_SUBSCRIBED REDIS_SUBSCRIBED69,3057
+#define REDIS_MONITORING REDIS_MONITORING72,3139
+#define REDIS_REUSEADDR REDIS_REUSEADDR75,3247
+#define REDIS_KEEPALIVE_INTERVAL REDIS_KEEPALIVE_INTERVAL77,3277
+#define REDIS_CONNECT_RETRIES REDIS_CONNECT_RETRIES81,3434
+#define __redis_strerror_r(__redis_strerror_r88,3751
+#define __redis_strerror_r(__redis_strerror_r94,4070
+typedef struct redisReply {redisReply112,5002
+    int type; /* REDIS_REPLY_* */type113,5030
+    long long integer; /* The integer when type is REDIS_REPLY_INTEGER */integer114,5064
+    size_t len; /* Length of string */len115,5138
+    char *str; /* Used for both REDIS_REPLY_ERROR and REDIS_REPLY_STRING */str116,5177
+    size_t elements; /* number of elements, for REDIS_REPLY_ARRAY */elements117,5253
+    struct redisReply **element; /* elements vector for REDIS_REPLY_ARRAY */element118,5322
+} redisReply;redisReply119,5399
+enum redisConnectionType {redisConnectionType134,6019
+    REDIS_CONN_TCP,REDIS_CONN_TCP135,6046
+    REDIS_CONN_UNIX,REDIS_CONN_UNIX136,6066
+typedef struct redisContext {redisContext140,6131
+    int err; /* Error flags, 0 when there is no error */err141,6161
+    char errstr[128]; /* String representation of error when applicable */errstr142,6218
+    int fd;fd143,6293
+    int flags;flags144,6305
+    char *obuf; /* Write buffer */obuf145,6320
+    redisReader *reader; /* Protocol reader */reader146,6355
+    enum redisConnectionType connection_type;connection_type148,6403
+    struct timeval *timeout;timeout149,6449
+        char *host;host152,6492
+        char *source_addr;source_addr153,6512
+        int port;port154,6539
+    } tcp;tcp155,6557
+        char *path;path158,6582
+    } unix_sock;unix_sock159,6602
+} redisContext;redisContext161,6620
+
+/home/liudy/Seafile/WorkSpace/software/plasma/common/thirdparty/hiredis/async.h,1723
+#define __HIREDIS_ASYNC_H__HIREDIS_ASYNC_H33,1716
+typedef void (redisCallbackFn)(struct redisAsyncContext*, void*, void*);redisCallbackFn44,1988
+typedef struct redisCallback {redisCallback45,2061
+    struct redisCallback *next; /* simple singly linked list */next46,2092
+    redisCallbackFn *fn;fn47,2156
+    void *privdata;privdata48,2181
+} redisCallback;redisCallback49,2201
+typedef struct redisCallbackList {redisCallbackList52,2281
+    redisCallback *head, *tail;head53,2316
+    redisCallback *head, *tail;tail53,2316
+} redisCallbackList;redisCallbackList54,2348
+typedef void (redisDisconnectCallback)(const struct redisAsyncContext*, int status);redisDisconnectCallback57,2407
+typedef void (redisConnectCallback)(const struct redisAsyncContext*, int status);redisConnectCallback58,2492
+typedef struct redisAsyncContext {redisAsyncContext61,2622
+    redisContext c;c63,2718
+    int err;err66,2797
+    char *errstr;errstr67,2810
+    void *data;data70,2859
+        void *data;data74,2928
+        void (*addRead)(void *privdata);addRead78,3085
+        void (*delRead)(void *privdata);delRead79,3126
+        void (*addWrite)(void *privdata);addWrite80,3167
+        void (*delWrite)(void *privdata);delWrite81,3209
+        void (*cleanup)(void *privdata);cleanup82,3251
+    } ev;ev83,3292
+    redisDisconnectCallback *onDisconnect;onDisconnect87,3458
+    redisConnectCallback *onConnect;onConnect90,3560
+    redisCallbackList replies;replies93,3634
+        redisCallbackList invalid;invalid97,3712
+        struct dict *channels;channels98,3747
+        struct dict *patterns;patterns99,3778
+    } sub;sub100,3809
+} redisAsyncContext;redisAsyncContext101,3820
+
+/home/liudy/Seafile/WorkSpace/software/plasma/common/thirdparty/hiredis/async.c,3596
+#define _EL_ADD_READ(_EL_ADD_READ44,1902
+#define _EL_DEL_READ(_EL_DEL_READ47,2018
+#define _EL_ADD_WRITE(_EL_ADD_WRITE50,2134
+#define _EL_DEL_WRITE(_EL_DEL_WRITE53,2253
+#define _EL_CLEANUP(_EL_CLEANUP56,2372
+static unsigned int callbackHash(const void *key) {callbackHash64,2675
+static void *callbackValDup(void *privdata, const void *src) {callbackValDup69,2845
+static int callbackKeyCompare(void *privdata, const void *key1, const void *key2) {callbackKeyCompare76,3031
+static void callbackKeyDestructor(void *privdata, void *key) {callbackKeyDestructor86,3292
+static void callbackValDestructor(void *privdata, void *val) {callbackValDestructor91,3404
+static dictType callbackDict = {callbackDict96,3508
+static redisAsyncContext *redisAsyncInitialize(redisContext *c) {redisAsyncInitialize105,3670
+static void __redisAsyncCopyError(redisAsyncContext *ac) {__redisAsyncCopyError144,4780
+redisAsyncContext *redisAsyncConnect(const char *ip, int port) {redisAsyncConnect153,4954
+redisAsyncContext *redisAsyncConnectBind(const char *ip, int port,redisAsyncConnectBind171,5303
+redisAsyncContext *redisAsyncConnectBindWithReuse(const char *ip, int port,redisAsyncConnectBindWithReuse179,5609
+redisAsyncContext *redisAsyncConnectUnix(const char *path) {redisAsyncConnectUnix187,5942
+int redisAsyncSetConnectCallback(redisAsyncContext *ac, redisConnectCallback *fn) {redisAsyncSetConnectCallback205,6288
+int redisAsyncSetDisconnectCallback(redisAsyncContext *ac, redisDisconnectCallback *fn) {redisAsyncSetDisconnectCallback218,6720
+static int __redisPushCallback(redisCallbackList *list, redisCallback *source) {__redisPushCallback227,6980
+static int __redisShiftCallback(redisCallbackList *list, redisCallback *target) {__redisShiftCallback249,7496
+static void __redisRunCallback(redisAsyncContext *ac, redisCallback *cb, redisReply *reply) {__redisRunCallback265,7921
+static void __redisAsyncFree(redisAsyncContext *ac) {__redisAsyncFree275,8243
+void redisAsyncFree(redisAsyncContext *ac) {redisAsyncFree323,9974
+static void __redisAsyncDisconnect(redisAsyncContext *ac) {__redisAsyncDisconnect331,10222
+void redisAsyncDisconnect(redisAsyncContext *ac) {redisAsyncDisconnect357,11318
+static int __redisGetSubscribeCallback(redisAsyncContext *ac, redisReply *reply, redisCallback *dstcb) {__redisGetSubscribeCallback364,11546
+void redisProcessCallbacks(redisAsyncContext *ac) {redisProcessCallbacks411,13219
+static int __redisAsyncHandleConnect(redisAsyncContext *ac) {__redisAsyncHandleConnect494,16854
+void redisAsyncHandleRead(redisAsyncContext *ac) {redisAsyncHandleRead516,17542
+void redisAsyncHandleWrite(redisAsyncContext *ac) {redisAsyncHandleWrite537,18132
+static const char *nextArgument(const char *start, const char **str, size_t *len) {nextArgument566,19033
+static int __redisAsyncCommand(redisAsyncContext *ac, redisCallbackFn *fn, void *privdata, const char *cmd, size_t len) {__redisAsyncCommand583,19544
+int redisvAsyncCommand(redisAsyncContext *ac, redisCallbackFn *fn, void *privdata, const char *format, va_list ap) {redisvAsyncCommand650,21959
+int redisAsyncCommand(redisAsyncContext *ac, redisCallbackFn *fn, void *privdata, const char *format, ...) {redisAsyncCommand665,22381
+int redisAsyncCommandArgv(redisAsyncContext *ac, redisCallbackFn *fn, void *privdata, int argc, const char **argv, const size_t *argvlen) {redisAsyncCommandArgv674,22644
+int redisAsyncFormattedCommand(redisAsyncContext *ac, redisCallbackFn *fn, void *privdata, const char *cmd, size_t len) {redisAsyncFormattedCommand684,22985
+
+/home/liudy/Seafile/WorkSpace/software/plasma/common/thirdparty/hiredis/Makefile,2735
+OBJ=net.o hiredis.o sds.o async.o read.oOBJ6,236
+EXAMPLES=hiredis-example hiredis-example-libevent hiredis-example-libev hiredis-example-glibEXAMPLES7,277
+TESTS=hiredis-testTESTS8,370
+LIBNAME=libhiredisLIBNAME9,389
+PKGCONFNAME=hiredis.pcPKGCONFNAME10,408
+HIREDIS_MAJOR=$(shell grep HIREDIS_MAJOR hiredis.h | awk '{print $$3}')HIREDIS_MAJOR12,432
+HIREDIS_MINOR=$(shell grep HIREDIS_MINOR hiredis.h | awk '{print $$3}')HIREDIS_MINOR13,504
+HIREDIS_PATCH=$(shell grep HIREDIS_PATCH hiredis.h | awk '{print $$3}')HIREDIS_PATCH14,576
+HIREDIS_SONAME=$(shell grep HIREDIS_SONAME hiredis.h | awk '{print $$3}')HIREDIS_SONAME15,648
+PREFIX?=/usr/localPREFIX18,767
+INCLUDE_PATH?=include/hiredisINCLUDE_PATH19,786
+LIBRARY_PATH?=libLIBRARY_PATH20,816
+PKGCONF_PATH?=pkgconfigPKGCONF_PATH21,834
+INSTALL_INCLUDE_PATH= $(DESTDIR)$(PREFIX)/$(INCLUDE_PATH)INSTALL_INCLUDE_PATH22,858
+INSTALL_LIBRARY_PATH= $(DESTDIR)$(PREFIX)/$(LIBRARY_PATH)INSTALL_LIBRARY_PATH23,916
+INSTALL_PKGCONF_PATH= $(INSTALL_LIBRARY_PATH)/$(PKGCONF_PATH)INSTALL_PKGCONF_PATH24,974
+REDIS_PORT=56379REDIS_PORT27,1083
+REDIS_SERVER=redis-serverREDIS_SERVER28,1100
+define REDIS_TEST_CONFIGREDIS_TEST_CONFIG29,1126
+CC:=$(shell sh -c 'type $(CC) >/dev/null 2>/dev/null && echo $(CC) || echo gcc')CC39,1356
+CXX:=$(shell sh -c 'type $(CXX) >/dev/null 2>/dev/null && echo $(CXX) || echo g++')CXX40,1437
+OPTIMIZATION?=-O3OPTIMIZATION41,1521
+WARNINGS=-Wall -W -Wstrict-prototypes -Wwrite-stringsWARNINGS42,1539
+DEBUG_FLAGS?= -g -ggdbDEBUG_FLAGS43,1593
+REAL_CFLAGS=$(OPTIMIZATION) -fPIC $(CFLAGS) $(WARNINGS) $(DEBUG_FLAGS) $(ARCH)REAL_CFLAGS44,1616
+REAL_LDFLAGS=$(LDFLAGS) $(ARCH)REAL_LDFLAGS45,1695
+DYLIBSUFFIX=soDYLIBSUFFIX47,1728
+STLIBSUFFIX=aSTLIBSUFFIX48,1743
+DYLIB_MINOR_NAME=$(LIBNAME).$(DYLIBSUFFIX).$(HIREDIS_SONAME)DYLIB_MINOR_NAME49,1757
+DYLIB_MAJOR_NAME=$(LIBNAME).$(DYLIBSUFFIX).$(HIREDIS_MAJOR)DYLIB_MAJOR_NAME50,1818
+DYLIBNAME=$(LIBNAME).$(DYLIBSUFFIX)DYLIBNAME51,1878
+DYLIB_MAKE_CMD=$(CC) -shared -Wl,-soname,$(DYLIB_MINOR_NAME) -o $(DYLIBNAME) $(LDFLAGS)DYLIB_MAKE_CMD52,1914
+STLIBNAME=$(LIBNAME).$(STLIBSUFFIX)STLIBNAME53,2002
+STLIB_MAKE_CMD=ar rcs $(STLIBNAME)STLIB_MAKE_CMD54,2038
+uname_S := $(shell sh -c 'uname -s 2>/dev/null || echo not')uname_S57,2104
+  DYLIB_MAKE_CMD=$(CC) -G -o $(DYLIBNAME) -h $(DYLIB_MINOR_NAME) $(LDFLAGS)DYLIB_MAKE_CMD60,2226
+  INSTALL= cp -rINSTALL61,2302
+  DYLIBSUFFIX=dylibDYLIBSUFFIX64,2350
+  DYLIB_MINOR_NAME=$(LIBNAME).$(HIREDIS_SONAME).$(DYLIBSUFFIX)DYLIB_MINOR_NAME65,2370
+  DYLIB_MAKE_CMD=$(CC) -shared -Wl,-install_name,$(DYLIB_MINOR_NAME) -o $(DYLIBNAME) $(LDFLAGS)DYLIB_MAKE_CMD66,2433
+  INSTALL?= cp -rINSTALL165,6261
+INSTALL?= cp -aINSTALL168,6286
+
+/home/liudy/Seafile/WorkSpace/software/plasma/common/thirdparty/hiredis/win32.h,350
+#define _WIN32_HELPER_INCLUDE_WIN32_HELPER_INCLUDE2,30
+#define inline inline6,92
+#define va_copy(va_copy10,140
+#define snprintf snprintf14,198
+__inline int c99_vsnprintf(char* str, size_t size, const char* format, va_list ap)c99_vsnprintf16,229
+__inline int c99_snprintf(char* str, size_t size, const char* format, ...)c99_snprintf28,501
+
+/home/liudy/Seafile/WorkSpace/software/plasma/common/thirdparty/hiredis/read.h,2597
+#define __HIREDIS_READ_H__HIREDIS_READ_H34,1716
+#define REDIS_ERR REDIS_ERR37,1778
+#define REDIS_OK REDIS_OK38,1799
+#define REDIS_ERR_IO REDIS_ERR_IO44,2101
+#define REDIS_ERR_EOF REDIS_ERR_EOF45,2153
+#define REDIS_ERR_PROTOCOL REDIS_ERR_PROTOCOL46,2195
+#define REDIS_ERR_OOM REDIS_ERR_OOM47,2245
+#define REDIS_ERR_OTHER REDIS_ERR_OTHER48,2289
+#define REDIS_REPLY_STRING REDIS_REPLY_STRING50,2341
+#define REDIS_REPLY_ARRAY REDIS_REPLY_ARRAY51,2370
+#define REDIS_REPLY_INTEGER REDIS_REPLY_INTEGER52,2398
+#define REDIS_REPLY_NIL REDIS_REPLY_NIL53,2428
+#define REDIS_REPLY_STATUS REDIS_REPLY_STATUS54,2454
+#define REDIS_REPLY_ERROR REDIS_REPLY_ERROR55,2483
+#define REDIS_READER_MAX_BUF REDIS_READER_MAX_BUF57,2512
+typedef struct redisReadTask {redisReadTask63,2633
+    int type;type64,2664
+    int elements; /* number of elements in multibulk container */elements65,2678
+    int idx; /* index in parent (array) object */idx66,2744
+    void *obj; /* holds user-generated value for a read task */obj67,2794
+    struct redisReadTask *parent; /* parent task */parent68,2858
+    void *privdata; /* user-settable arbitrary field */privdata69,2910
+} redisReadTask;redisReadTask70,2966
+typedef struct redisReplyObjectFunctions {redisReplyObjectFunctions72,2984
+    void *(*createString)(const redisReadTask*, char*, size_t);createString73,3027
+    void *(*createArray)(const redisReadTask*, int);createArray74,3091
+    void *(*createInteger)(const redisReadTask*, long long);createInteger75,3144
+    void *(*createNil)(const redisReadTask*);createNil76,3205
+    void (*freeObject)(void*);freeObject77,3251
+} redisReplyObjectFunctions;redisReplyObjectFunctions78,3282
+typedef struct redisReader {redisReader80,3312
+    int err; /* Error flags, 0 when there is no error */err81,3341
+    char errstr[128]; /* String representation of error when applicable */errstr82,3398
+    char *buf; /* Read buffer */buf84,3474
+    size_t pos; /* Buffer cursor */pos85,3507
+    size_t len; /* Buffer length */len86,3543
+    size_t maxbuf; /* Max length of unused buffer */maxbuf87,3579
+    redisReadTask rstack[9];rstack89,3633
+    int ridx; /* Index of current read task */ridx90,3662
+    void *reply; /* Temporary reply pointer */reply91,3709
+    redisReplyObjectFunctions *fn;fn93,3757
+    void *privdata;privdata94,3792
+} redisReader;redisReader95,3812
+#define redisReaderSetPrivdata(redisReaderSetPrivdata103,4106
+#define redisReaderGetObject(redisReaderGetObject104,4190
+#define redisReaderGetError(redisReaderGetError105,4253
+
+/home/liudy/Seafile/WorkSpace/software/plasma/common/thirdparty/hiredis/sds.c,2859
+static inline int sdsHdrSize(char type) {sdsHdrSize41,1866
+static inline char sdsReqType(size_t string_size) {sdsReqType57,2310
+sds sdsnewlen(const void *init, size_t initlen) {sdsnewlen81,3170
+sds sdsempty(void) {sdsempty139,4774
+sds sdsnew(const char *init) {sdsnew144,4898
+sds sdsdup(const sds s) {sdsdup150,5056
+void sdsfree(sds s) {sdsfree155,5189
+void sdsupdatelen(sds s) {sdsupdatelen174,5810
+void sdsclear(sds s) {sdsclear183,6152
+sds sdsMakeRoomFor(sds s, size_t addlen) {sdsMakeRoomFor194,6567
+sds sdsRemoveFreeSpace(sds s) {sdsRemoveFreeSpace245,8222
+size_t sdsAllocSize(sds s) {sdsAllocSize278,9119
+void *sdsAllocPtr(sds s) {sdsAllocPtr285,9351
+void sdsIncrLen(sds s, int incr) {sdsIncrLen312,10298
+sds sdsgrowzero(sds s, size_t len) {sdsgrowzero358,12072
+sds sdscatlen(sds s, const void *t, size_t len) {sdscatlen376,12688
+sds sdscat(sds s, const char *t) {sdscat391,13163
+sds sdscatsds(sds s, const sds t) {sdscatsds399,13454
+sds sdscpylen(sds s, const char *t, size_t len) {sdscpylen405,13660
+sds sdscpy(sds s, const char *t) {sdscpy418,14033
+#define SDS_LLSTR_SIZE SDS_LLSTR_SIZE428,14369
+int sdsll2str(char *s, long long value) {sdsll2str429,14395
+int sdsull2str(char *s, unsigned long long v) {sdsull2str461,15035
+sds sdsfromlonglong(long long value) {sdsfromlonglong493,15648
+sds sdscatvprintf(sds s, const char *fmt, va_list ap) {sdscatvprintf501,15858
+sds sdscatprintf(sds s, const char *fmt, ...) {sdscatprintf554,17493
+sds sdscatfmt(sds s, char const *fmt, ...) {sdscatfmt579,18266
+sds sdstrim(sds s, const char *cset) {sdstrim681,21167
+void sdsrange(sds s, int start, int end) {sdsrange712,22031
+void sdstolower(sds s) {sdstolower741,22769
+void sdstoupper(sds s) {sdstoupper748,22942
+int sdscmp(const sds s1, const sds s2) {sdscmp765,23415
+sds *sdssplitlen(const char *s, int len, const char *sep, int seplen, int *count) {sdssplitlen793,24227
+void sdsfreesplitres(sds *tokens, int count) {sdsfreesplitres843,25773
+sds sdscatrepr(sds s, const char *p, size_t len) {sdscatrepr856,26280
+int is_hex_digit(char c) {is_hex_digit883,27110
+int hex_digit_to_int(char c) {hex_digit_to_int890,27337
+sds *sdssplitargs(const char *line, int *argc) {sdssplitargs931,28599
+sds sdsmapchars(sds s, const char *from, const char *to, size_t setlen) {sdsmapchars1050,32945
+sds sdsjoin(char **argv, int argc, char *sep) {sdsjoin1066,33378
+sds sdsjoinsds(sds *argv, int argc, const char *sep, size_t seplen) {sdsjoinsds1078,33667
+void *sds_malloc(size_t size) { return s_malloc(size); }sds_malloc1094,34273
+void *sds_realloc(void *ptr, size_t size) { return s_realloc(ptr,size); }sds_realloc1095,34330
+void sds_free(void *ptr) { s_free(ptr); }sds_free1096,34404
+#define UNUSED(UNUSED1103,34536
+int sdsTest(void) {sdsTest1104,34564
+int main(void) {main1269,39768
+
+/home/liudy/Seafile/WorkSpace/software/plasma/common/thirdparty/hiredis/read.c,1383
+static void __redisReaderSetError(redisReader *r, int type, const char *str) {__redisReaderSetError46,1891
+static size_t chrtos(char *buf, size_t size, char byte) {chrtos72,2504
+static void __redisReaderSetErrorProtocolByte(redisReader *r, char byte) {__redisReaderSetErrorProtocolByte96,3204
+static void __redisReaderSetErrorOOM(redisReader *r) {__redisReaderSetErrorOOM105,3494
+static char *readBytes(redisReader *r, unsigned int bytes) {readBytes109,3612
+static char *seekNewline(char *s, size_t len) {seekNewline120,3844
+static long long readLongLong(char *s) {readLongLong148,4766
+static char *readLine(redisReader *r, int *_len) {readLine175,5238
+static void moveToNextTask(redisReader *r) {moveToNextTask190,5553
+static int processLineItem(redisReader *r) {processLineItem215,6243
+static int processBulkItem(redisReader *r) {processBulkItem249,7177
+static int processMultiBulkItem(redisReader *r) {processMultiBulkItem302,8681
+static int processItem(redisReader *r) {processItem367,10566
+redisReader *redisReaderCreateWithFunctions(redisReplyObjectFunctions *fn) {redisReaderCreateWithFunctions416,11901
+void redisReaderFree(redisReader *r) {redisReaderFree437,12305
+int redisReaderFeed(redisReader *r, const char *buf, size_t len) {redisReaderFeed445,12502
+int redisReaderGetReply(redisReader *r, void **reply) {redisReaderGetReply477,13376
+
+/home/liudy/Seafile/WorkSpace/software/plasma/common/thirdparty/hiredis/test.c,1933
+enum connection_type {connection_type16,262
+    CONN_TCP,CONN_TCP17,285
+    CONN_UNIX,CONN_UNIX18,299
+    CONN_FDCONN_FD19,314
+struct config {config22,330
+    enum connection_type type;type23,346
+        const char *host;host26,391
+        int port;port27,417
+        struct timeval timeout;timeout28,435
+    } tcp;tcp29,467
+        const char *path;path32,492
+    } unix_sock;unix_sock33,518
+static int tests = 0, fails = 0;tests37,600
+static int tests = 0, fails = 0;fails37,600
+#define test(test38,633
+#define test_cond(test_cond39,693
+static long long usec(void) {usec41,817
+#undef assertassert50,1097
+#define assert(assert51,1111
+static redisContext *select_database(redisContext *c) {select_database54,1147
+static int disconnect(redisContext *c, int keep_fd) {disconnect76,1774
+static redisContext *connect(struct config config) {connect94,2231
+static void test_format_commands(void) {test_format_commands125,3172
+#define INTEGER_WIDTH_TEST(INTEGER_WIDTH_TEST174,5292
+#define FLOAT_WIDTH_TEST(FLOAT_WIDTH_TEST183,5948
+static void test_append_formatted_commands(struct config config) {test_append_formatted_commands245,8591
+static void test_reply_reader(void) {test_reply_reader267,9044
+static void test_free_null(void) {test_free_null346,11978
+static void test_blocking_connection_errors(void) {test_blocking_connection_errors359,12319
+static void test_blocking_connection(struct config config) {test_blocking_connection386,13533
+static void test_blocking_connection_timeouts(struct config config) {test_blocking_connection_timeouts464,16468
+static void test_blocking_io_errors(struct config config) {test_blocking_io_errors510,18095
+static void test_invalid_timeout_errors(struct config config) {test_invalid_timeout_errors561,19930
+static void test_throughput(struct config config) {test_throughput585,20794
+int main(int argc, char **argv) {main749,26663
+
+/home/liudy/Seafile/WorkSpace/software/plasma/common/thirdparty/uthash.h,7613
+#define UTHASH_HUTHASH_H25,1165
+#define UTHASH_VERSION UTHASH_VERSION27,1183
+#define DECLTYPE(DECLTYPE39,1737
+#define NO_DECLTYPENO_DECLTYPE41,1839
+#define DECLTYPE(DECLTYPE42,1859
+#define NO_DECLTYPENO_DECLTYPE45,1958
+#define DECLTYPE(DECLTYPE46,1978
+#define DECLTYPE(DECLTYPE48,2057
+#define DECLTYPE_ASSIGN(DECLTYPE_ASSIGN52,2118
+#define DECLTYPE_ASSIGN(DECLTYPE_ASSIGN58,2468
+typedef unsigned int uint32_t;uint32_t71,3002
+typedef unsigned char uint8_t;uint8_t72,3033
+typedef unsigned int uint32_t;uint32_t77,3146
+typedef unsigned char uint8_t;uint8_t78,3177
+#define uthash_fatal(uthash_fatal82,3237
+#define uthash_malloc(uthash_malloc85,3346
+#define uthash_free(uthash_free88,3453
+#define uthash_strlen(uthash_strlen91,3562
+#define uthash_memcmp(uthash_memcmp94,3626
+#define uthash_noexpand_fyi(uthash_noexpand_fyi98,3705
+#define uthash_expand_fyi(uthash_expand_fyi101,3818
+#define HASH_INITIAL_NUM_BUCKETS HASH_INITIAL_NUM_BUCKETS105,3938
+#define HASH_INITIAL_NUM_BUCKETS_LOG2 HASH_INITIAL_NUM_BUCKETS_LOG2106,4018
+#define HASH_BKT_CAPACITY_THRESH HASH_BKT_CAPACITY_THRESH107,4098
+#define ELMT_FROM_HH(ELMT_FROM_HH110,4240
+#define HH_FROM_ELMT(HH_FROM_ELMT112,4368
+#define HASH_VALUE(HASH_VALUE114,4451
+#define HASH_FIND_BYHASHVALUE(HASH_FIND_BYHASHVALUE119,4713
+#define HASH_FIND(HASH_FIND131,5585
+#define HASH_BLOOM_BITLEN HASH_BLOOM_BITLEN139,6031
+#define HASH_BLOOM_BYTELEN HASH_BLOOM_BYTELEN140,6077
+#define HASH_BLOOM_MAKE(HASH_BLOOM_MAKE141,6175
+#define HASH_BLOOM_FREE(HASH_BLOOM_FREE150,6769
+#define HASH_BLOOM_BITSET(HASH_BLOOM_BITSET155,7031
+#define HASH_BLOOM_BITTEST(HASH_BLOOM_BITTEST156,7102
+#define HASH_BLOOM_ADD(HASH_BLOOM_ADD158,7174
+#define HASH_BLOOM_TEST(HASH_BLOOM_TEST161,7352
+#define HASH_BLOOM_MAKE(HASH_BLOOM_MAKE165,7537
+#define HASH_BLOOM_FREE(HASH_BLOOM_FREE166,7566
+#define HASH_BLOOM_ADD(HASH_BLOOM_ADD167,7595
+#define HASH_BLOOM_TEST(HASH_BLOOM_TEST168,7629
+#define HASH_BLOOM_BYTELEN HASH_BLOOM_BYTELEN169,7668
+#define HASH_MAKE_TABLE(HASH_MAKE_TABLE172,7706
+#define HASH_REPLACE_BYHASHVALUE_INORDER(HASH_REPLACE_BYHASHVALUE_INORDER191,9130
+#define HASH_REPLACE_BYHASHVALUE(HASH_REPLACE_BYHASHVALUE201,9851
+#define HASH_REPLACE(HASH_REPLACE211,10541
+#define HASH_REPLACE_INORDER(HASH_REPLACE_INORDER218,10974
+#define HASH_APPEND_LIST(HASH_APPEND_LIST225,11423
+#define HASH_ADD_KEYPTR_BYHASHVALUE_INORDER(HASH_ADD_KEYPTR_BYHASHVALUE_INORDER233,11934
+#define HASH_ADD_KEYPTR_INORDER(HASH_ADD_KEYPTR_INORDER271,14944
+#define HASH_ADD_BYHASHVALUE_INORDER(HASH_ADD_BYHASHVALUE_INORDER278,15383
+#define HASH_ADD_INORDER(HASH_ADD_INORDER281,15573
+#define HASH_ADD_KEYPTR_BYHASHVALUE(HASH_ADD_KEYPTR_BYHASHVALUE284,15738
+#define HASH_ADD_KEYPTR(HASH_ADD_KEYPTR307,17494
+#define HASH_ADD_BYHASHVALUE(HASH_ADD_BYHASHVALUE314,17922
+#define HASH_ADD(HASH_ADD317,18092
+#define HASH_TO_BKT(HASH_TO_BKT320,18241
+#define HASH_DELETE(HASH_DELETE337,19179
+#define HASH_FIND_STR(HASH_FIND_STR374,21987
+#define HASH_ADD_STR(HASH_ADD_STR376,22138
+#define HASH_REPLACE_STR(HASH_REPLACE_STR378,22298
+#define HASH_FIND_INT(HASH_FIND_INT380,22471
+#define HASH_ADD_INT(HASH_ADD_INT382,22601
+#define HASH_REPLACE_INT(HASH_REPLACE_INT384,22731
+#define HASH_FIND_PTR(HASH_FIND_PTR386,22874
+#define HASH_ADD_PTR(HASH_ADD_PTR388,23007
+#define HASH_REPLACE_PTR(HASH_REPLACE_PTR390,23140
+#define HASH_DEL(HASH_DEL392,23286
+#define HASH_OOPS(HASH_OOPS399,23591
+#define HASH_FSCK(HASH_FSCK400,23670
+#define HASH_FSCK(HASH_FSCK452,27838
+#define HASH_EMIT_KEY(HASH_EMIT_KEY459,28123
+#define HASH_EMIT_KEY(HASH_EMIT_KEY466,28556
+#define HASH_FCN HASH_FCN471,28710
+#define HASH_FCN HASH_FCN473,28747
+#define HASH_BER(HASH_BER477,28864
+#define HASH_SAX(HASH_SAX490,29688
+#define HASH_FNV(HASH_FNV500,30387
+#define HASH_OAT(HASH_OAT511,31147
+#define HASH_JEN_MIX(HASH_JEN_MIX526,32239
+#define HASH_JEN(HASH_JEN539,33165
+#undef get16bitsget16bits580,36367
+#define get16bits(get16bits583,36540
+#define get16bits(get16bits587,36622
+#define HASH_SFH(HASH_SFH590,36776
+#define MUR_GETBLOCK(MUR_GETBLOCK644,40736
+#define MUR_PLUS0_ALIGNED(MUR_PLUS0_ALIGNED646,40789
+#define MUR_PLUS1_ALIGNED(MUR_PLUS1_ALIGNED647,40852
+#define MUR_PLUS2_ALIGNED(MUR_PLUS2_ALIGNED648,40915
+#define MUR_PLUS3_ALIGNED(MUR_PLUS3_ALIGNED649,40978
+#define WP(WP650,41041
+#define MUR_THREE_ONE(MUR_THREE_ONE652,41186
+#define MUR_TWO_TWO(MUR_TWO_TWO653,41278
+#define MUR_ONE_THREE(MUR_ONE_THREE654,41370
+#define MUR_THREE_ONE(MUR_THREE_ONE656,41505
+#define MUR_TWO_TWO(MUR_TWO_TWO657,41597
+#define MUR_ONE_THREE(MUR_ONE_THREE658,41689
+#define MUR_GETBLOCK(MUR_GETBLOCK660,41788
+#define MUR_ROTL32(MUR_ROTL32665,42088
+#define MUR_FMIX(MUR_FMIX666,42149
+#define HASH_MUR(HASH_MUR675,42323
+#define HASH_FIND_IN_BKT(HASH_FIND_IN_BKT714,45007
+#define HASH_ADD_TO_BKT(HASH_ADD_TO_BKT736,46628
+#define HASH_DEL_IN_BKT(HASH_DEL_IN_BKT750,47595
+#define HASH_EXPAND_BUCKETS(HASH_EXPAND_BUCKETS791,49872
+#define HASH_SORT(HASH_SORT843,53906
+#define HASH_SRT(HASH_SRT844,53962
+#define HASH_SELECT(HASH_SELECT936,61338
+#define HASH_CLEAR(HASH_CLEAR974,64339
+#define HASH_OVERHEAD(HASH_OVERHEAD985,65099
+#define HASH_ITER(HASH_ITER993,65574
+#define HASH_ITER(HASH_ITER997,65844
+#define HASH_COUNT(HASH_COUNT1003,66145
+#define HASH_CNT(HASH_CNT1004,66188
+typedef struct UT_hash_bucket {UT_hash_bucket1006,66263
+   struct UT_hash_handle *hh_head;hh_head1007,66295
+   unsigned count;count1008,66330
+   unsigned expand_mult;expand_mult1022,67189
+} UT_hash_bucket;UT_hash_bucket1024,67215
+#define HASH_SIGNATURE HASH_SIGNATURE1027,67308
+#define HASH_BLOOM_SIGNATURE HASH_BLOOM_SIGNATURE1028,67343
+typedef struct UT_hash_table {UT_hash_table1030,67385
+   UT_hash_bucket *buckets;buckets1031,67416
+   unsigned num_buckets, log2_num_buckets;num_buckets1032,67444
+   unsigned num_buckets, log2_num_buckets;log2_num_buckets1032,67444
+   unsigned num_items;num_items1033,67487
+   struct UT_hash_handle *tail; /* tail hh in app order, for fast append    */tail1034,67510
+   ptrdiff_t hho; /* hash handle offset (byte pos of hash handle in element */hho1035,67589
+   unsigned ideal_chain_maxlen;ideal_chain_maxlen1039,67825
+   unsigned nonideal_items;nonideal_items1044,68097
+   unsigned ineff_expands, noexpand;ineff_expands1052,68574
+   unsigned ineff_expands, noexpand;noexpand1052,68574
+   uint32_t signature; /* used only to find hash tables in external analysis */signature1054,68612
+   uint32_t bloom_sig; /* used only to test bloom exists in external analysis */bloom_sig1056,68710
+   uint8_t *bloom_bv;bloom_bv1057,68791
+   uint8_t bloom_nbits;bloom_nbits1058,68813
+} UT_hash_table;UT_hash_table1061,68845
+typedef struct UT_hash_handle {UT_hash_handle1063,68863
+   struct UT_hash_table *tbl;tbl1064,68895
+   void *prev;                       /* prev element in app order      */prev1065,68925
+   void *next;                       /* next element in app order      */next1066,68999
+   struct UT_hash_handle *hh_prev;   /* previous hh in bucket order    */hh_prev1067,69073
+   struct UT_hash_handle *hh_next;   /* next hh in bucket order        */hh_next1068,69147
+   void *key;                        /* ptr to enclosing struct's key  */key1069,69221
+   unsigned keylen;                  /* enclosing struct's key len     */keylen1070,69295
+   unsigned hashv;                   /* result of hash-fcn(key)        */hashv1071,69369
+} UT_hash_handle;UT_hash_handle1072,69443
+
+/home/liudy/Seafile/WorkSpace/software/plasma/common/thirdparty/ae/zmalloc.h,126
+#define _ZMALLOC_H_ZMALLOC_H2,19
+#define zmalloc zmalloc5,55
+#define zfree zfree9,100
+#define zrealloc zrealloc13,144
+
+/home/liudy/Seafile/WorkSpace/software/plasma/common/thirdparty/ae/config.h,159
+#define __CONFIG_H__CONFIG_H31,1630
+#define HAVE_EPOLL HAVE_EPOLL39,1751
+#define HAVE_KQUEUE HAVE_KQUEUE43,1911
+#define HAVE_EVPORT HAVE_EVPORT49,2008
+
+/home/liudy/Seafile/WorkSpace/software/plasma/common/thirdparty/ae/ae_select.c,766
+typedef struct aeApiState {aeApiState35,1688
+    fd_set rfds, wfds;rfds36,1716
+    fd_set rfds, wfds;wfds36,1716
+    fd_set _rfds, _wfds;_rfds39,1844
+    fd_set _rfds, _wfds;_wfds39,1844
+} aeApiState;aeApiState40,1869
+static int aeApiCreate(aeEventLoop *eventLoop) {aeApiCreate42,1884
+static int aeApiResize(aeEventLoop *eventLoop, int setsize) {aeApiResize52,2117
+static void aeApiFree(aeEventLoop *eventLoop) {aeApiFree58,2300
+static int aeApiAddEvent(aeEventLoop *eventLoop, int fd, int mask) {aeApiAddEvent62,2382
+static void aeApiDelEvent(aeEventLoop *eventLoop, int fd, int mask) {aeApiDelEvent70,2619
+static int aeApiPoll(aeEventLoop *eventLoop, struct timeval *tvp) {aeApiPoll77,2843
+static char *aeApiName(void) {aeApiName104,3774
+
+/home/liudy/Seafile/WorkSpace/software/plasma/common/thirdparty/ae/ae_kqueue.c,686
+typedef struct aeApiState {aeApiState36,1706
+    int kqfd;kqfd37,1734
+    struct kevent *events;events38,1748
+} aeApiState;aeApiState39,1775
+static int aeApiCreate(aeEventLoop *eventLoop) {aeApiCreate41,1790
+static int aeApiResize(aeEventLoop *eventLoop, int setsize) {aeApiResize60,2247
+static void aeApiFree(aeEventLoop *eventLoop) {aeApiFree67,2447
+static int aeApiAddEvent(aeEventLoop *eventLoop, int fd, int mask) {aeApiAddEvent75,2611
+static void aeApiDelEvent(aeEventLoop *eventLoop, int fd, int mask) {aeApiDelEvent90,3099
+static int aeApiPoll(aeEventLoop *eventLoop, struct timeval *tvp) {aeApiPoll104,3538
+static char *aeApiName(void) {aeApiName136,4513
+
+/home/liudy/Seafile/WorkSpace/software/plasma/common/thirdparty/ae/ae.c,1542
+aeEventLoop *aeCreateEventLoop(int setsize) {aeCreateEventLoop63,2418
+int aeGetSetSize(aeEventLoop *eventLoop) {aeGetSetSize95,3430
+int aeResizeSetSize(aeEventLoop *eventLoop, int setsize) {aeResizeSetSize106,3856
+void aeDeleteEventLoop(aeEventLoop *eventLoop) {aeDeleteEventLoop124,4507
+void aeStop(aeEventLoop *eventLoop) {aeStop131,4666
+int aeCreateFileEvent(aeEventLoop *eventLoop, int fd, int mask,aeCreateFileEvent135,4732
+void aeDeleteFileEvent(aeEventLoop *eventLoop, int fd, int mask)aeDeleteFileEvent155,5289
+int aeGetFileEvents(aeEventLoop *eventLoop, int fd) {aeGetFileEvents173,5812
+static void aeGetTime(long *seconds, long *milliseconds)aeGetTime180,5981
+static void aeAddMillisecondsToNow(long long milliseconds, long *sec, long *ms) {aeAddMillisecondsToNow189,6159
+long long aeCreateTimeEvent(aeEventLoop *eventLoop, long long milliseconds,aeCreateTimeEvent203,6529
+int aeDeleteTimeEvent(aeEventLoop *eventLoop, long long id)aeDeleteTimeEvent222,7110
+static aeTimeEvent *aeSearchNearestTimer(aeEventLoop *eventLoop)aeSearchNearestTimer246,7970
+static int processTimeEvents(aeEventLoop *eventLoop) {processTimeEvents262,8403
+int aeProcessEvents(aeEventLoop *eventLoop, int flags)aeProcessEvents349,11589
+int aeWait(int fd, int mask, long long milliseconds) {aeWait430,14490
+void aeMain(aeEventLoop *eventLoop) {aeMain450,15102
+char *aeGetApiName(void) {aeGetApiName459,15347
+void aeSetBeforeSleepProc(aeEventLoop *eventLoop, aeBeforeSleepProc *beforesleep) {aeSetBeforeSleepProc463,15401
+
+/home/liudy/Seafile/WorkSpace/software/plasma/common/thirdparty/ae/ae_evport.c,1261
+static int evport_debug = 0;evport_debug41,1751
+#define MAX_EVENT_BATCHSZ MAX_EVENT_BATCHSZ66,3177
+typedef struct aeApiState {aeApiState68,3208
+    int     portfd;                             /* event port */portfd69,3236
+    int     npending;                           /* # of pending fds */npending70,3301
+    int     pending_fds[MAX_EVENT_BATCHSZ];     /* pending fds */pending_fds71,3372
+    int     pending_masks[MAX_EVENT_BATCHSZ];   /* pending fds' masks */pending_masks72,3438
+} aeApiState;aeApiState73,3511
+static int aeApiCreate(aeEventLoop *eventLoop) {aeApiCreate75,3526
+static int aeApiResize(aeEventLoop *eventLoop, int setsize) {aeApiResize97,3988
+static void aeApiFree(aeEventLoop *eventLoop) {aeApiFree102,4101
+static int aeApiLookupPending(aeApiState *state, int fd) {aeApiLookupPending109,4241
+static int aeApiAssociate(const char *where, int portfd, int fd, int mask) {aeApiAssociate123,4526
+static int aeApiAddEvent(aeEventLoop *eventLoop, int fd, int mask) {aeApiAddEvent152,5291
+static void aeApiDelEvent(aeEventLoop *eventLoop, int fd, int mask) {aeApiDelEvent183,6414
+static int aeApiPoll(aeEventLoop *eventLoop, struct timeval *tvp) {aeApiPoll243,8626
+static char *aeApiName(void) {aeApiName318,10885
+
+/home/liudy/Seafile/WorkSpace/software/plasma/common/thirdparty/ae/ae.h,2519
+#define __AE_H____AE_H__34,1822
+#define AE_OK AE_OK38,1859
+#define AE_ERR AE_ERR39,1875
+#define AE_NONE AE_NONE41,1894
+#define AE_READABLE AE_READABLE42,1912
+#define AE_WRITABLE AE_WRITABLE43,1934
+#define AE_FILE_EVENTS AE_FILE_EVENTS45,1957
+#define AE_TIME_EVENTS AE_TIME_EVENTS46,1982
+#define AE_ALL_EVENTS AE_ALL_EVENTS47,2007
+#define AE_DONT_WAIT AE_DONT_WAIT48,2061
+#define AE_NOMORE AE_NOMORE50,2085
+#define AE_DELETED_EVENT_ID AE_DELETED_EVENT_ID51,2106
+#define AE_NOTUSED(AE_NOTUSED54,2151
+typedef void aeFileProc(struct aeEventLoop *eventLoop, int fd, void *clientData, int mask);aeFileProc59,2238
+typedef int aeTimeProc(struct aeEventLoop *eventLoop, long long id, void *clientData);aeTimeProc60,2330
+typedef void aeEventFinalizerProc(struct aeEventLoop *eventLoop, void *clientData);aeEventFinalizerProc61,2417
+typedef void aeBeforeSleepProc(struct aeEventLoop *eventLoop);aeBeforeSleepProc62,2501
+typedef struct aeFileEvent {aeFileEvent65,2592
+    int mask; /* one of AE_(READABLE|WRITABLE) */mask66,2621
+    aeFileProc *rfileProc;rfileProc67,2671
+    aeFileProc *wfileProc;wfileProc68,2698
+    void *clientData;clientData69,2725
+} aeFileEvent;aeFileEvent70,2747
+typedef struct aeTimeEvent {aeTimeEvent73,2790
+    long long id; /* time event identifier. */id74,2819
+    long when_sec; /* seconds */when_sec75,2866
+    long when_ms; /* milliseconds */when_ms76,2899
+    aeTimeProc *timeProc;timeProc77,2936
+    aeEventFinalizerProc *finalizerProc;finalizerProc78,2962
+    void *clientData;clientData79,3003
+    struct aeTimeEvent *next;next80,3025
+} aeTimeEvent;aeTimeEvent81,3055
+typedef struct aeFiredEvent {aeFiredEvent84,3091
+    int fd;fd85,3121
+    int mask;mask86,3133
+} aeFiredEvent;aeFiredEvent87,3147
+typedef struct aeEventLoop {aeEventLoop90,3202
+    int maxfd;   /* highest file descriptor currently registered */maxfd91,3231
+    int setsize; /* max number of file descriptors tracked */setsize92,3299
+    long long timeEventNextId;timeEventNextId93,3361
+    time_t lastTime;     /* Used to detect system clock skew */lastTime94,3392
+    aeFileEvent *events; /* Registered events */events95,3456
+    aeFiredEvent *fired; /* Fired events */fired96,3505
+    aeTimeEvent *timeEventHead;timeEventHead97,3549
+    int stop;stop98,3581
+    void *apidata; /* This is used for polling API specific data */apidata99,3595
+    aeBeforeSleepProc *beforesleep;beforesleep100,3663
+} aeEventLoop;aeEventLoop101,3699
+
+/home/liudy/Seafile/WorkSpace/software/plasma/common/thirdparty/ae/ae_epoll.c,694
+typedef struct aeApiState {aeApiState34,1672
+    int epfd;epfd35,1700
+    struct epoll_event *events;events36,1714
+} aeApiState;aeApiState37,1746
+static int aeApiCreate(aeEventLoop *eventLoop) {aeApiCreate39,1761
+static int aeApiResize(aeEventLoop *eventLoop, int setsize) {aeApiResize58,2274
+static void aeApiFree(aeEventLoop *eventLoop) {aeApiFree65,2479
+static int aeApiAddEvent(aeEventLoop *eventLoop, int fd, int mask) {aeApiAddEvent73,2643
+static void aeApiDelEvent(aeEventLoop *eventLoop, int fd, int delmask) {aeApiDelEvent90,3321
+static int aeApiPoll(aeEventLoop *eventLoop, struct timeval *tvp) {aeApiPoll108,3957
+static char *aeApiName(void) {aeApiName133,4793
+
+/home/liudy/Seafile/WorkSpace/software/plasma/common/thirdparty/build-redis.sh,0
+
+/home/liudy/Seafile/WorkSpace/software/plasma/common/task.h,783
+#define TASK_HTASK_H2,15
+typedef unique_id function_id;function_id15,475
+typedef unique_id task_id;task_id19,634
+typedef unique_id task_iid;task_iid23,781
+typedef unique_id node_id;node_id27,886
+typedef struct task_spec_impl task_spec;task_spec35,1056
+enum arg_type { ARG_BY_REF, ARG_BY_VAL };arg_type38,1149
+enum arg_type { ARG_BY_REF, ARG_BY_VAL };ARG_BY_REF38,1149
+enum arg_type { ARG_BY_REF, ARG_BY_VAL };ARG_BY_VAL38,1149
+enum scheduling_state {scheduling_state95,3229
+  TASK_STATUS_WAITING = 1,TASK_STATUS_WAITING96,3253
+  TASK_STATUS_SCHEDULED = 2,TASK_STATUS_SCHEDULED97,3280
+  TASK_STATUS_RUNNING = 4,TASK_STATUS_RUNNING98,3309
+  TASK_STATUS_DONE = 8TASK_STATUS_DONE99,3336
+typedef struct task_instance_impl task_instance;task_instance105,3551
+
+/home/liudy/Seafile/WorkSpace/software/plasma/common/Makefile,629
+CC = gccCC1,0
+CFLAGS = -g -Wall --std=c99 -D_XOPEN_SOURCE=500 -D_POSIX_C_SOURCE=200809L -fPIC -I. -Ithirdparty -Ithirdparty/ae -Wno-typedef-redefinition -WerrorCFLAGS2,9
+BUILD = buildBUILD3,156
+	valgrind --leak-check=full --error-exitcode=1 ./build/common_tests-leak-check40,1480
+	valgrind --leak-check=full --error-exitcode=1 ./build/db_tests-leak-check41,1548
+	valgrind --leak-check=full --error-exitcode=1 ./build/io_tests-leak-check42,1612
+	valgrind --leak-check=full --error-exitcode=1 ./build/task_tests-leak-check43,1676
+	valgrind --leak-check=full --error-exitcode=1 ./build/redis_tests-leak-check44,1742
+
+/home/liudy/Seafile/WorkSpace/software/plasma/common/install-dependencies.sh,0
+
+/home/liudy/Seafile/WorkSpace/software/plasma/common/task.c,2450
+  int8_t type;type24,754
+    object_id obj_id;obj_id26,779
+      ptrdiff_t offset;offset30,935
+      int64_t length;length31,959
+    } value;value32,981
+} task_arg;task_arg34,999
+struct task_spec_impl {task_spec_impl36,1012
+  function_id function_id;function_id38,1069
+  int64_t num_args;num_args40,1131
+  int64_t arg_index;arg_index42,1213
+  int64_t num_returns;num_returns44,1267
+  int64_t args_value_size;args_value_size46,1357
+  int64_t args_value_offset;args_value_offset50,1600
+  task_arg args_and_returns[0];args_and_returns52,1704
+#define TASK_SPEC_SIZE(TASK_SPEC_SIZE56,1817
+task_spec *alloc_task_spec(function_id function_id,alloc_task_spec60,1990
+int64_t task_size(task_spec *spec) {task_size75,2504
+unique_id *task_function(task_spec *spec) {task_function80,2651
+int64_t task_num_args(task_spec *spec) {task_num_args84,2727
+int64_t task_num_returns(task_spec *spec) {task_num_returns88,2796
+int8_t task_arg_type(task_spec *spec, int64_t arg_index) {task_arg_type92,2871
+object_id *task_arg_id(task_spec *spec, int64_t arg_index) {task_arg_id97,3037
+uint8_t *task_arg_val(task_spec *spec, int64_t arg_index) {task_arg_val104,3266
+int64_t task_arg_length(task_spec *spec, int64_t arg_index) {task_arg_length113,3632
+int64_t task_args_add_ref(task_spec *spec, object_id obj_id) {task_args_add_ref120,3868
+int64_t task_args_add_val(task_spec *spec, uint8_t *data, int64_t length) {task_args_add_val127,4072
+object_id *task_return(task_spec *spec, int64_t ret_index) {task_return141,4649
+void free_task_spec(task_spec *spec) {free_task_spec148,4927
+void print_task(task_spec *spec, UT_string *output) {print_task153,5060
+struct task_instance_impl {task_instance_impl175,5849
+  task_iid iid;iid176,5877
+  int32_t state;state177,5893
+  node_id node;node178,5910
+  task_spec spec;spec179,5926
+task_instance *make_task_instance(task_iid task_iid,make_task_instance182,5948
+int64_t task_instance_size(task_instance *instance) {task_instance_size196,6438
+task_iid *task_instance_id(task_instance *instance) {task_instance_id200,6576
+int32_t *task_instance_state(task_instance *instance) {task_instance_state204,6658
+node_id *task_instance_node(task_instance *instance) {task_instance_node208,6744
+task_spec *task_instance_task_spec(task_instance *instance) {task_instance_task_spec212,6828
+void task_instance_free(task_instance *instance) {task_instance_free216,6919
+
+/home/liudy/Seafile/WorkSpace/software/plasma/Makefile,303
+CC = gccCC1,0
+CFLAGS = -g -Wall --std=c99 -D_XOPEN_SOURCE=500 -D_POSIX_C_SOURCE=200809L -I. -Icommon -Icommon/thirdpartyCFLAGS2,9
+TEST_CFLAGS = -DPLASMA_TEST=1 -IsrcTEST_CFLAGS3,116
+BUILD = buildBUILD4,152
+	valgrind --leak-check=full --error-exitcode=1 ./build/manager_tests-leak-check51,2297
+
+/home/liudy/Seafile/WorkSpace/software/plasma/src/example.c,47
+int main(int argc, char *argv[]) {main18,360
+
+/home/liudy/Seafile/WorkSpace/software/plasma/src/plasma_manager.c,3981
+typedef struct client_object_connection client_object_connection;client_object_connection37,907
+struct plasma_manager_state {plasma_manager_state39,974
+  event_loop *loop;loop41,1025
+  plasma_connection *plasma_conn;plasma_conn43,1120
+  client_connection *manager_connections;manager_connections47,1307
+  db_handle *db;db48,1349
+  uint8_t addr[4];addr50,1388
+  int port;port52,1426
+  client_object_connection *fetch_connections;fetch_connections56,1613
+plasma_manager_state *g_manager_state = NULL;g_manager_state59,1664
+struct client_object_connection {client_object_connection62,1792
+  object_id object_id;object_id64,1888
+  client_connection *client_conn;client_conn67,2025
+  int64_t timer;timer70,2183
+  int num_retries;num_retries73,2292
+  client_object_connection *next;next75,2346
+  char **manager_vector;manager_vector78,2465
+  int manager_count;manager_count80,2560
+  int next_manager;next_manager84,2763
+  UT_hash_handle active_hh;active_hh88,2920
+  UT_hash_handle fetch_hh;fetch_hh91,3060
+struct client_connection {client_connection95,3156
+  plasma_manager_state *manager_state;manager_state98,3306
+  int64_t cursor;cursor100,3386
+  plasma_request_buffer *transfer_queue;transfer_queue105,3657
+  int fd;fd108,3783
+  client_object_connection *active_objects;active_objects111,3913
+  int num_return_objects;num_return_objects114,4056
+  char *ip_addr_port;ip_addr_port118,4284
+  UT_hash_handle manager_hh;manager_hh120,4344
+void free_client_object_connection(client_object_connection *object_conn) {free_client_object_connection123,4377
+int send_client_reply(client_connection *conn, plasma_reply *reply) {send_client_reply131,4617
+client_object_connection *get_object_connection(client_connection *client_conn,get_object_connection148,5225
+client_object_connection *add_object_connection(client_connection *client_conn,add_object_connection156,5551
+void remove_object_connection(client_connection *client_conn,remove_object_connection189,6943
+void parse_ip_addr_port(const char *ip_addr_port, char *ip_addr, int *port) {parse_ip_addr_port215,8040
+plasma_manager_state *init_plasma_manager_state(const char *store_socket_name,init_plasma_manager_state222,8266
+void destroy_plasma_manager_state(plasma_manager_state *state) {destroy_plasma_manager_state248,9417
+event_loop *get_event_loop(plasma_manager_state *state) {get_event_loop271,10182
+void write_object_chunk(client_connection *conn, plasma_request_buffer *buf) {write_object_chunk282,10525
+void send_queued_request(event_loop *loop,send_queued_request311,11434
+int read_object_chunk(client_connection *conn, plasma_request_buffer *buf) {read_object_chunk358,13089
+void process_data_chunk(event_loop *loop,process_data_chunk387,13851
+client_connection *get_manager_connection(plasma_manager_state *state,get_manager_connection428,15593
+void process_transfer_request(event_loop *loop,process_transfer_request462,17095
+void process_data_request(event_loop *loop,process_data_request503,18803
+void request_transfer_from(client_connection *client_conn,request_transfer_from537,20157
+int manager_timeout_handler(event_loop *loop, timer_id id, void *context) {manager_timeout_handler570,21587
+void request_transfer(object_id object_id,request_transfer588,22357
+void process_fetch_request(client_connection *client_conn,process_fetch_request626,24103
+void process_fetch_requests(client_connection *client_conn,process_fetch_requests658,25305
+void process_message(event_loop *loop,process_message667,25613
+client_connection *new_client_connection(event_loop *loop,new_client_connection713,27046
+void handle_new_client(event_loop *loop,handle_new_client731,27810
+int get_client_sock(client_connection *conn) {get_client_sock738,28041
+void start_server(const char *store_socket_name,start_server742,28110
+void signal_handler(int signal) {signal_handler762,28888
+int main(int argc, char *argv[]) {main774,29189
+
+/home/liudy/Seafile/WorkSpace/software/plasma/src/plasma_store.c,2663
+void plasma_send_reply(int fd, plasma_reply *reply) {plasma_send_reply41,1067
+  object_id object_id;object_id51,1330
+  plasma_object_info info;info53,1409
+  int fd;fd55,1486
+  int64_t map_size;map_size57,1532
+  ptrdiff_t offset;offset59,1594
+  UT_hash_handle handle;handle61,1651
+  uint8_t *pointer;pointer63,1739
+  UT_array *clients;clients65,1830
+} object_table_entry;object_table_entry66,1851
+  object_id object_id;object_id70,1925
+  UT_array *waiting_clients;waiting_clients72,2017
+  UT_hash_handle handle;handle74,2083
+} object_notify_entry;object_notify_entry75,2108
+struct client {client78,2198
+  int sock;sock80,2271
+  plasma_store_state *plasma_state;plasma_state82,2330
+UT_icd client_icd = {sizeof(client *), NULL, NULL, NULL};client_icd87,2467
+UT_icd object_table_entry_icd = {sizeof(object_id), NULL, NULL, NULL};object_table_entry_icd91,2626
+  int subscriber_fd;subscriber_fd95,2790
+  UT_array *object_ids;object_ids98,2947
+  UT_hash_handle hh;hh100,3009
+} notification_queue;notification_queue101,3030
+struct plasma_store_state {plasma_store_state103,3053
+  event_loop *loop;loop105,3121
+  object_table_entry *open_objects;open_objects107,3210
+  object_table_entry *sealed_objects;sealed_objects110,3364
+  object_notify_entry *objects_notify;objects_notify112,3450
+  notification_queue *pending_notifications;pending_notifications116,3717
+plasma_store_state *init_plasma_store(event_loop *loop) {init_plasma_store119,3766
+void add_client_to_object_clients(object_table_entry *entry,add_client_to_object_clients131,4191
+void create_object(client *client_context,create_object145,4721
+int get_object(client *client_context,get_object192,6513
+int remove_client_from_object_clients(object_table_entry *entry,remove_client_from_object_clients229,8120
+void release_object(client *client_context, object_id object_id) {release_object245,8705
+int contains_object(client *client_context, object_id object_id) {contains_object265,9551
+void seal_object(client *client_context, object_id object_id) {seal_object274,9930
+void delete_object(client *client_context, object_id object_id) {delete_object324,12195
+void send_notifications(event_loop *loop,send_notifications344,13113
+void subscribe_to_updates(client *client_context, int conn) {subscribe_to_updates377,14393
+void process_message(event_loop *loop,process_message400,15582
+void new_client_connection(event_loop *loop,new_client_connection467,17866
+void signal_handler(int signal) {signal_handler485,18697
+void start_server(char *socket_name) {start_server491,18778
+int main(int argc, char *argv[]) {main501,19112
+
+/home/liudy/Seafile/WorkSpace/software/plasma/src/plasma_client.c,2350
+#define NUM_CONNECT_ATTEMPTS NUM_CONNECT_ATTEMPTS24,504
+  int key;key29,708
+  uint8_t *pointer;pointer31,773
+  size_t length;length33,840
+  int count;count36,1016
+  UT_hash_handle hh;hh38,1067
+} client_mmap_table_entry;client_mmap_table_entry39,1088
+  object_id object_id;object_id43,1207
+  int fd;fd45,1311
+  int count;count50,1630
+  UT_hash_handle hh;hh52,1681
+} object_in_use_entry;object_in_use_entry53,1702
+struct plasma_connection {plasma_connection57,1883
+  int store_conn;store_conn59,1989
+  int manager_conn;manager_conn61,2088
+  client_mmap_table_entry *mmap_table;mmap_table65,2320
+  object_in_use_entry *objects_in_use;objects_in_use68,2450
+int plasma_request_size(int num_object_ids) {plasma_request_size71,2493
+void plasma_send_request(int fd, int type, plasma_request *req) {plasma_send_request76,2659
+plasma_request make_plasma_request(object_id object_id) {make_plasma_request83,2924
+plasma_request *make_plasma_multiple_request(int num_object_ids,make_plasma_multiple_request88,3072
+uint8_t *lookup_or_mmap(plasma_connection *conn,lookup_or_mmap100,3626
+void increment_object_count(plasma_connection *conn,increment_object_count127,4385
+void plasma_create(plasma_connection *conn,plasma_create161,5835
+void plasma_get(plasma_connection *conn,plasma_get199,7563
+void plasma_release(plasma_connection *conn, object_id object_id) {plasma_release226,8660
+void plasma_contains(plasma_connection *conn,plasma_contains263,10293
+void plasma_seal(plasma_connection *conn, object_id object_id) {plasma_seal275,10741
+void plasma_delete(plasma_connection *conn, object_id object_id) {plasma_delete283,11025
+int plasma_subscribe(plasma_connection *conn) {plasma_subscribe288,11212
+plasma_connection *plasma_connect(const char *store_socket_name,plasma_connect309,12135
+void plasma_disconnect(plasma_connection *conn) {plasma_disconnect349,13442
+#define h_addr h_addr357,13604
+int plasma_manager_try_connect(const char *ip_addr, int port) {plasma_manager_try_connect359,13635
+int plasma_manager_connect(const char *ip_addr, int port) {plasma_manager_connect388,14408
+void plasma_transfer(plasma_connection *conn,plasma_transfer404,14829
+void plasma_fetch(plasma_connection *conn,plasma_fetch419,15279
+int get_manager_fd(plasma_connection *conn) {get_manager_fd459,16579
+
+/home/liudy/Seafile/WorkSpace/software/plasma/src/fling.h,72
+#define CMSG_SPACE(CMSG_SPACE21,736
+#define CMSG_LEN(CMSG_LEN23,831
+
+/home/liudy/Seafile/WorkSpace/software/plasma/src/plasma.h,1765
+#define PLASMA_HPLASMA_H2,17
+  int64_t data_size;data_size13,174
+  int64_t metadata_size;metadata_size14,195
+  int64_t create_time;create_time15,220
+  int64_t construct_duration;construct_duration16,243
+} plasma_object_info;plasma_object_info17,273
+  int store_fd;store_fd24,598
+  int64_t mmap_size;mmap_size26,668
+} object_handle;object_handle27,689
+  object_handle handle;handle31,788
+  ptrdiff_t data_offset;data_offset33,880
+  ptrdiff_t metadata_offset;metadata_offset35,977
+  int64_t data_size;data_size37,1046
+  int64_t metadata_size;metadata_size39,1111
+} plasma_object;plasma_object40,1136
+enum object_status { OBJECT_NOT_FOUND = 0, OBJECT_FOUND = 1 };object_status42,1154
+enum object_status { OBJECT_NOT_FOUND = 0, OBJECT_FOUND = 1 };OBJECT_NOT_FOUND42,1154
+enum object_status { OBJECT_NOT_FOUND = 0, OBJECT_FOUND = 1 };OBJECT_FOUND42,1154
+enum plasma_message_type {plasma_message_type44,1218
+  PLASMA_CREATE = 128,PLASMA_CREATE46,1275
+  PLASMA_GET,PLASMA_GET48,1322
+  PLASMA_RELEASE,PLASMA_RELEASE50,1403
+  PLASMA_CONTAINS,PLASMA_CONTAINS52,1461
+  PLASMA_SEAL,PLASMA_SEAL54,1505
+  PLASMA_DELETE,PLASMA_DELETE56,1547
+  PLASMA_SUBSCRIBE,PLASMA_SUBSCRIBE58,1622
+  PLASMA_TRANSFER,PLASMA_TRANSFER60,1686
+  PLASMA_DATA,PLASMA_DATA62,1739
+  PLASMA_FETCH,PLASMA_FETCH64,1810
+  int64_t data_size;data_size69,1887
+  int64_t metadata_size;metadata_size71,1952
+  uint8_t addr[4];addr74,2087
+  int port;port77,2210
+  int num_object_ids;num_object_ids79,2295
+  object_id object_ids[1];object_ids81,2376
+} plasma_request;plasma_request82,2403
+  object_id object_id;object_id86,2489
+  plasma_object object;object88,2566
+  int has_object;has_object93,2792
+} plasma_reply;plasma_reply94,2810
+
+/home/liudy/Seafile/WorkSpace/software/plasma/src/plasma_store.h,163
+#define PLASMA_STORE_HPLASMA_STORE_H2,23
+typedef struct client client;client6,68
+typedef struct plasma_store_state plasma_store_state;plasma_store_state8,99
+
+/home/liudy/Seafile/WorkSpace/software/plasma/src/plasma_client.h,120
+#define PLASMA_CLIENT_HPLASMA_CLIENT_H2,24
+typedef struct plasma_connection plasma_connection;plasma_connection6,70
+
+/home/liudy/Seafile/WorkSpace/software/plasma/src/fling.c,190
+void init_msg(struct msghdr *msg,init_msg5,41
+int send_fd(int conn, int fd, const char *payload, int size) {send_fd20,364
+int recv_fd(int conn, char *payload, int size) {recv_fd38,911
+
+/home/liudy/Seafile/WorkSpace/software/plasma/src/malloc.h,31
+#define MALLOC_HMALLOC_H2,17
+
+/home/liudy/Seafile/WorkSpace/software/plasma/src/plasma_manager.h,939
+#define PLASMA_MANAGER_HPLASMA_MANAGER_H2,25
+#define NUM_RETRIES NUM_RETRIES8,115
+#define NUM_RETRIES NUM_RETRIES10,143
+#define MANAGER_TIMEOUT MANAGER_TIMEOUT15,243
+#define MANAGER_TIMEOUT MANAGER_TIMEOUT17,278
+#define BUFSIZE BUFSIZE21,400
+typedef struct plasma_manager_state plasma_manager_state;plasma_manager_state23,422
+typedef struct client_connection client_connection;client_connection24,480
+typedef struct client_object_connection client_object_connection;client_object_connection25,532
+typedef struct plasma_request_buffer plasma_request_buffer;plasma_request_buffer188,7376
+struct plasma_request_buffer {plasma_request_buffer189,7436
+  int type;type190,7467
+  object_id object_id;object_id191,7479
+  uint8_t *data;data192,7502
+  int64_t data_size;data_size193,7519
+  uint8_t *metadata;metadata194,7540
+  int64_t metadata_size;metadata_size195,7561
+  plasma_request_buffer *next;next199,7781
+
+/home/liudy/Seafile/WorkSpace/software/plasma/src/malloc.c,1256
+#define MMAP(MMAP16,262
+#define MUNMAP(MUNMAP17,291
+#define DIRECT_MMAP(DIRECT_MMAP18,330
+#define DIRECT_MUNMAP(DIRECT_MUNMAP19,366
+#define USE_DL_PREFIXUSE_DL_PREFIX20,412
+#define HAVE_MORECORE HAVE_MORECORE21,434
+#define DEFAULT_MMAP_THRESHOLD DEFAULT_MMAP_THRESHOLD22,458
+#define DEFAULT_GRANULARITY DEFAULT_GRANULARITY23,500
+#undef MMAPMMAP27,587
+#undef MUNMAPMUNMAP28,599
+#undef DIRECT_MMAPDIRECT_MMAP29,613
+#undef DIRECT_MUNMAPDIRECT_MUNMAP30,632
+#undef USE_DL_PREFIXUSE_DL_PREFIX31,653
+#undef HAVE_MORECOREHAVE_MORECORE32,674
+#undef DEFAULT_GRANULARITYDEFAULT_GRANULARITY33,695
+struct mmap_record {mmap_record35,723
+  int fd;fd36,744
+  void *pointer;pointer37,754
+  int64_t size;size38,771
+  UT_hash_handle hh_fd;hh_fd39,787
+  UT_hash_handle hh_pointer;hh_pointer40,811
+struct mmap_record *records_by_fd = NULL;records_by_fd44,891
+struct mmap_record *records_by_pointer = NULL;records_by_pointer45,933
+const int GRANULARITY_MULTIPLIER = 2;GRANULARITY_MULTIPLIER47,981
+int create_buffer(int64_t size) {create_buffer51,1155
+void *fake_mmap(size_t size) {fake_mmap74,1626
+int fake_munmap(void *addr, size_t size) {fake_munmap102,2592
+void get_malloc_mapinfo(void *addr,get_malloc_mapinfo123,3192
